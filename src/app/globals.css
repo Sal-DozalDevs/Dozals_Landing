@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dd-obsidian: #0B0A08;
+  --color-dd-bone: #F7EFE1;
+  --color-dd-ember: #C47A3D;
+  --color-dd-linen: #ECE1CB;
+  --color-dd-ash: #342F29;
+  --color-dd-moss: #48684C;
+  --color-dd-amber: #D29B44;
+  --color-dd-rust: #A54134;
+  --color-dd-fog: #788083;
+
+  --font-serif: var(--font-lora), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-work-sans), Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'IBM Plex Mono', monospace;
+
+  --tracking-brand-caps: 0.12em;
+  --tracking-brand-tagline: 0.28em;
+  --tracking-brand-editorial: 0.005em;
+
+  --radius-doorplate: 180px;
+}
+
+@layer base {
+  :root {
+    --dd-obsidian-40: rgba(11, 10, 8, 0.40);
+    --dd-obsidian-60: rgba(11, 10, 8, 0.60);
+    --dd-obsidian-80: rgba(11, 10, 8, 0.80);
+  }
+  
+  body {
+    background-color: var(--color-dd-obsidian);
+    color: var(--color-dd-bone);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
