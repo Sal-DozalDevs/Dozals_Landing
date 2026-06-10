@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const PLATFORMS = [
-  "Airbnbs",
-  "VRBOs",
-  "Bookings",
-  "Expedias",
-  "Vacasas"
+  "Airbnb",
+  "Vrbo",
+  "Booking",
+  "Expedia",
+  "Vacasa"
 ];
 
 export default function RotatingPlatformText() {
@@ -17,13 +17,13 @@ export default function RotatingPlatformText() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % PLATFORMS.length);
-    }, 600); 
+    }, 1800);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <span className="relative inline-block mx-2 font-serif font-medium align-middle">
-      <span className="invisible px-1">Bookings</span>
+      <span className="invisible px-1">Booking</span>
       <AnimatePresence mode="wait">
         <motion.span
           key={index}

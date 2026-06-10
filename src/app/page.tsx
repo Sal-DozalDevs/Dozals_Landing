@@ -10,6 +10,8 @@ import AnimatedHighlightText from "./components/ui/AnimatedHighlightText";
 import RotatingPlatformText from "./components/ui/RotatingPlatformText";
 import GHLCalendar from "./components/ui/GHLCalendar";
 import faqSchema from "./data/faq";
+import DemoSection from "./components/ui/DemoSection";
+import CapabilitiesSection from "./components/ui/CapabilitiesSection";
 
 // Framer motion variants for the ease-out 250-400ms requirements
 const fadeUp: Variants = {
@@ -45,23 +47,25 @@ export default function Home() {
       >
         <GlintScatter seed={4786} />
         <motion.div variants={fadeUp} className="mb-12 relative z-10">
-          {/* Logo Placeholder / Symbol */}
-          <div className="w-16 h-16 mx-auto mb-8">
-            <img src="/assets/logos/DozalDevs_Symbol_OnDark.svg" alt="DozalDevs Monogram" className="w-full h-full object-contain" />
+          <div className="w-48 md:w-64 mx-auto mb-8">
+            <img src="/assets/logos/DozalDevs_Tagline_Mono_White.svg" alt="DozalDevs" className="w-full h-auto object-contain" />
           </div>
           
           <h1 className="font-serif text-4xl md:text-6xl font-semibold mb-6 tracking-tight leading-[1.05] max-w-4xl mx-auto">
-            Put your <RotatingPlatformText /> on autopilot so you can finally sleep through the night.
+            Hire a digital employee to manage your <RotatingPlatformText /> listings while you sleep.
           </h1>
           <p className="font-sans text-lg md:text-xl text-dd-bone/80 max-w-2xl mx-auto">
-            Dozals are the autonomous digital employees that handles guest communications, access management, and all operations while you rest.
+            Connect your accounts and let your Dozal take over the busywork. It instantly answers guest questions, issues smart lock codes, and schedules your cleaners 24/7.
           </p>
 
           <div className="mt-10 mb-4 flex flex-col items-center">
-            <button className="bg-dd-ember text-dd-bone px-8 py-4 font-sans font-semibold rounded-sm hover:bg-[#A3602A] transition-colors duration-300 shadow-lg shadow-dd-ember/20">
-              Start My Free Trial
+            <button
+              onClick={() => document.getElementById("calendar")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-dd-ember text-dd-bone px-8 py-4 font-sans font-semibold rounded-sm hover:bg-[#A3602A] transition-colors duration-300 shadow-lg shadow-dd-ember/20 cursor-pointer"
+            >
+              Schedule My Demo
             </button>
-            <p className="text-xs text-dd-bone/50 mt-4 font-mono tracking-wide">No credit card required • Cancel anytime</p>
+            <p className="text-xs text-dd-bone/50 mt-4 font-mono tracking-wide">15-minute personalized setup • No commitment</p>
           </div>
         </motion.div>
 
@@ -80,6 +84,12 @@ export default function Home() {
           />
         </motion.div>
       </motion.section>
+
+      {/* ─── AI DEMO ─── */}
+      <DemoSection />
+
+      {/* ─── CAPABILITIES ─── */}
+      <CapabilitiesSection />
 
       <Threshold isOpen />
 
@@ -115,34 +125,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Feature 2 */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp} 
-            className="flex flex-col md:flex-row-reverse gap-12 items-center"
-          >
-            <div className="md:w-1/2 space-y-6">
-               <div className="flex items-center gap-4">
-                 <div className="h-px bg-dd-ember w-8" />
-                 <span className="font-mono text-sm text-dd-bone/70 uppercase tracking-brand-caps">Access Management</span>
-               </div>
-               <h2 className="font-serif text-3xl md:text-5xl font-medium leading-[1.15]">
-                 Automate secure access code generation and never deal with a lockout again.
-               </h2>
-               <p className="text-lg text-dd-bone/80 leading-[1.6] max-w-md">
-                 Generate secure, automated key codes linked exactly to check-in and check-out times. Support for Schlage, Yale, and major smart lock platforms, operating entirely in the background.
-               </p>
-            </div>
-            <div className="md:w-1/2 relative w-full aspect-square md:aspect-[4/3] bg-dd-ash rounded-sm overflow-hidden border border-dd-ash/30">
-               <img 
-                 src="/assets/images/doorway_dusk.png" 
-                 alt="A doorway with low, warm lighting" 
-                 className="w-full h-full object-cover"
-               />
-            </div>
-          </motion.div>
+
 
           {/* Feature 3 */}
           <motion.div 
@@ -272,54 +255,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      <Threshold />
-
-      {/* ─── TECHNICAL SECTION ─── */}
-      <section className="py-24 px-6 md:px-12 max-w-5xl mx-auto w-full">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-          className="bg-dd-ash/10 border border-dd-ash/30 rounded-sm p-8 md:p-12 relative overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-dd-ash/0 via-dd-ash to-dd-ash/0" />
-          
-          <motion.h3 variants={fadeUp} className="font-mono text-sm uppercase tracking-brand-caps text-dd-bone/50 mb-8">
-            Enterprise-grade performance. Built for scale.
-          </motion.h3>
-          
-          <motion.div variants={fadeUp} className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-dd-ash/30">
-              <thead className="bg-[#0F0D0B]">
-                <tr>
-                  <th className="px-6 py-4 text-left text-xs font-mono text-dd-bone/50 uppercase tracking-brand-caps">Metric</th>
-                  <th className="px-6 py-4 text-left text-xs font-mono text-dd-bone/50 uppercase tracking-brand-caps">Value</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-dd-ash/30 font-mono text-sm">
-                <tr>
-                  <td className="px-6 py-4 text-dd-bone/70">Response Latency</td>
-                  <td className="px-6 py-4 text-dd-bone tabular-nums">&lt; 1800ms</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 text-dd-bone/70">Uptime SLA</td>
-                  <td className="px-6 py-4 text-dd-bone tabular-nums">99.99%</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 text-dd-bone/70">Context Retention</td>
-                  <td className="px-6 py-4 text-dd-bone tabular-nums">512K tokens</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 text-dd-bone/70">IoT Support</td>
-                  <td className="px-6 py-4 text-dd-moss">Native (Schlage, Yale, Minut)</td>
-                </tr>
-              </tbody>
-            </table>
-          </motion.div>
-        </motion.div>
       </section>
 
       <Threshold />
@@ -472,7 +407,7 @@ export default function Home() {
       <Threshold />
 
       {/* ─── LEAD CAPTURE FORM ─── */}
-      <section className="py-24 px-6 md:px-12 bg-[#0F0D0B] relative overflow-hidden mt-12">
+      <section id="calendar" className="py-24 px-6 md:px-12 bg-[#0F0D0B] relative overflow-hidden mt-12">
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <motion.div
             initial="hidden"
@@ -515,10 +450,13 @@ export default function Home() {
           <p className="font-serif text-sm tracking-brand-tagline text-dd-ember uppercase italic mb-10">
             Bringing Digital Intelligence to Real Estate
           </p>
-          <button className="bg-dd-ember text-dd-bone px-8 py-4 font-sans font-semibold rounded-sm hover:bg-[#A3602A] transition-colors duration-300 shadow-lg shadow-dd-ember/20">
-            Start My Free Trial
+          <button
+            onClick={() => document.getElementById("calendar")?.scrollIntoView({ behavior: "smooth" })}
+            className="bg-dd-ember text-dd-bone px-8 py-4 font-sans font-semibold rounded-sm hover:bg-[#A3602A] transition-colors duration-300 shadow-lg shadow-dd-ember/20 cursor-pointer"
+          >
+            Schedule My Demo
           </button>
-          <p className="text-xs text-dd-bone/50 mt-4 font-mono tracking-wide">No credit card required • Cancel anytime</p>
+          <p className="text-xs text-dd-bone/50 mt-4 font-mono tracking-wide">15-minute personalized setup • No commitment</p>
         </motion.div>
       </section>
     </div>
