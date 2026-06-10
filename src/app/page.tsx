@@ -9,6 +9,7 @@ import GlintScatter from "./components/ui/GlintScatter";
 import AnimatedHighlightText from "./components/ui/AnimatedHighlightText";
 import RotatingPlatformText from "./components/ui/RotatingPlatformText";
 import GHLCalendar from "./components/ui/GHLCalendar";
+import faqSchema from "./data/faq";
 
 // Framer motion variants for the ease-out 250-400ms requirements
 const fadeUp: Variants = {
@@ -30,41 +31,9 @@ const staggerContainer: Variants = {
   }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does the AI know how to respond to my guests?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "DozalDevs ingests your existing property listings, past conversations, and brand guidelines to train a custom model. It responds exactly how you would, using your specific house rules and local recommendations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if a guest has an emergency the AI can't handle?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If the system detects an urgent issue (like a leak) or a question it lacks context for, it immediately pauses and escalates the thread to you or your staff via SMS and Slack."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it integrate with my current property management software?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. DozalDevs natively integrates with major platforms including Guesty, Hostaway, Airbnb, and Vrbo, allowing it to sync reservations and trigger automated workflows seamlessly."
-      }
-    }
-  ]
-};
-
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-dd-obsidian text-dd-bone selection:bg-dd-ember/30 selection:text-dd-bone font-sans pb-32">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    <div className="min-h-screen flex flex-col text-dd-bone selection:bg-dd-ember/30 selection:text-dd-bone font-sans pb-32">
       <Threshold />
 
       {/* ─── HERO ─── */}
@@ -85,7 +54,7 @@ export default function Home() {
             Put your <RotatingPlatformText /> on autopilot so you can finally sleep through the night.
           </h1>
           <p className="font-sans text-lg md:text-xl text-dd-bone/80 max-w-2xl mx-auto">
-            DozalDevs is the autonomous digital employee that handles guest communications, access management, and operations while you rest.
+            Dozals are the autonomous digital employees that handles guest communications, access management, and all operations while you rest.
           </p>
 
           <div className="mt-10 mb-4 flex flex-col items-center">
@@ -265,6 +234,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── NATIVE INTEGRATIONS MARQUEE ─── */}
+      <section className="py-16 border-y border-dd-ash/30 bg-[#0F0D0B]/30 flex flex-col items-center overflow-hidden">
+        <div className="font-mono text-xs text-dd-bone/50 uppercase tracking-brand-caps font-semibold mb-8">
+          Native API Integrations Built For Your Stack
+        </div>
+        <div 
+          className="w-full relative max-w-[100vw] overflow-hidden flex"
+          style={{
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+            maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+          }}
+        >
+          <div className="flex w-max animate-[scroll_25s_linear_infinite] hover:[animation-play-state:paused] items-center">
+            {/* Duplicated list for seamless infinite scroll */}
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center justify-around min-w-full">
+                {[
+                  { name: "Streamline", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de68de5f74ce0e2e4ef_streamline.png" },
+                  { name: "Track", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/6524452a5f4f1219afacfd91_64d292fd1b4c2ee61f11bd56_track-p-500.png" },
+                  { name: "Barefoot", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de05bf12654fb86ead4_barefoot%20logo.png" },
+                  { name: "Guesty", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de1d56f14f1e3c4ce06_guesty.png" },
+                  { name: "OwnerRez", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de28de5f7bb3ee2e4cf_owner%20rez%20logo.png" },
+                  { name: "Hostify", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de0900e30fadff3125b_hostify-logo.png" },
+                  { name: "Escapia", src: "https://cdn.prod.website-files.com/5f63854d5970333ed31b1b06/64418de25e8f7329a46f6711_escapia%20logo.png" },
+                ].map((logo, j) => (
+                  <div key={j} className="flex items-center justify-center mx-10 transition-transform duration-300 hover:scale-105 cursor-default">
+                    <img 
+                      src={logo.src} 
+                      alt={logo.name} 
+                      loading="lazy" 
+                      className="max-h-[35px] w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Threshold />
 
       {/* ─── TECHNICAL SECTION ─── */}
@@ -397,7 +406,7 @@ export default function Home() {
             <Glint className="w-8 h-8 text-dd-ember fill-current mx-auto mb-4" />
             <h3 className="font-sans text-xl font-medium text-dd-ember mb-4">Scale</h3>
             <div className="flex justify-center items-end gap-1 mb-10">
-              <span className="font-sans text-5xl font-semibold text-dd-bone">$19</span>
+              <span className="font-sans text-5xl font-semibold text-dd-bone">$9</span>
               <span className="font-mono text-[10px] text-dd-bone/60 uppercase tracking-brand-caps mb-2">/ property / mo</span>
             </div>
             

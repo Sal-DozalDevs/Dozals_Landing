@@ -42,4 +42,11 @@
   .text-balance {
     text-wrap: balance;
   }
+  @keyframes scroll {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes panGrid {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 240px 240px; }
+  }
 }

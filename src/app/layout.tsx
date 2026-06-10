@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   description: "Bringing Digital Intelligence to Real Estate",
 };
 
+import NoiseBackground from "./components/ui/NoiseBackground";
+import TechnicalGrid from "./components/ui/TechnicalGrid";
+import faqSchema from "./data/faq";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,8 +41,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${lora.variable} ${workSans.variable} ${jetbrainsMono.variable}`}>
-      <body suppressHydrationWarning className="antialiased selection:bg-dd-ember/30 selection:text-dd-bone">
-        <main>{children}</main>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </head>
+      <body suppressHydrationWarning className="antialiased selection:bg-dd-ember/30 selection:text-dd-bone relative">
+        <TechnicalGrid />
+        <NoiseBackground />
+        <main className="relative z-10">{children}</main>
       </body>
     </html>
   );
