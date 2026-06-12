@@ -74,7 +74,7 @@ export default function Home() {
 
           {/* Actual 26s video */}
           <video 
-            src="/assets/images/Video.mov" 
+            src="/assets/images/Video.mp4" 
             autoPlay 
             loop 
             playsInline
