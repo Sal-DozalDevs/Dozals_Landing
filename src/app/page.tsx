@@ -7,11 +7,12 @@ import Threshold from "./components/ui/Threshold";
 import Glint from "./components/ui/Glint";
 import GlintScatter from "./components/ui/GlintScatter";
 import AnimatedHighlightText from "./components/ui/AnimatedHighlightText";
-import RotatingPlatformText from "./components/ui/RotatingPlatformText";
 import GHLCalendar from "./components/ui/GHLCalendar";
 import faqSchema from "./data/faq";
 import DemoSection from "./components/ui/DemoSection";
 import CapabilitiesSection from "./components/ui/CapabilitiesSection";
+import ComparisonSection from "./components/ui/ComparisonSection";
+import ApprovalSection from "./components/ui/ApprovalSection";
 
 // Framer motion variants for the ease-out 250-400ms requirements
 const fadeUp: Variants = {
@@ -52,10 +53,10 @@ export default function Home() {
           </div>
           
           <h1 className="font-serif text-4xl md:text-6xl font-semibold mb-6 tracking-tight leading-[1.05] max-w-4xl mx-auto">
-            Hire a digital employee to manage your <RotatingPlatformText /> listings while you sleep.
+            Hire a digital employee to execute your <span className="text-dd-ember">Real Estate</span> needs while you rest.
           </h1>
           <p className="font-sans text-lg md:text-xl text-dd-bone/80 max-w-2xl mx-auto">
-            Connect your accounts and let your Dozal take over the busywork. It instantly answers guest questions, issues smart lock codes, and schedules your cleaners 24/7.
+            Connect your accounts and let it take over the busywork. <br/> Contact people in your behalf, organize your day. <br/> Give it instructions as your own personal assistant and it will handle the rest. Everything 24/7 and you're always in control.
           </p>
 
           <div className="mt-10 mb-4 flex flex-col items-center">
@@ -93,70 +94,8 @@ export default function Home() {
 
       <Threshold isOpen />
 
-      {/* ─── PROBLEM - SOLUTION ─── */}
-      <section className="py-24 px-6 md:px-12 max-w-5xl mx-auto w-full">
-        <div className="space-y-32">
-          {/* Feature 1 */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp} 
-            className="flex flex-col md:flex-row gap-12 items-center"
-          >
-            <div className="md:w-1/2 space-y-6">
-               <div className="flex items-center gap-4">
-                 <div className="h-px bg-dd-ember w-8" />
-                 <span className="font-mono text-sm text-dd-bone/70 uppercase tracking-brand-caps">Omnichannel Comms</span>
-               </div>
-               <h2 className="font-serif text-3xl md:text-5xl font-medium leading-[1.15]">
-                 Eliminate 90% of guest questions instantly with an AI trained on your brand voice.
-               </h2>
-               <p className="text-lg text-dd-bone/80 leading-[1.6] max-w-md">
-                 Stop losing sleep over missing towels or pool codes. The system learns your exact operational details and handles check-ins, local recommendations, and real-time FAQs across all booking channels.
-               </p>
-            </div>
-            <div className="md:w-1/2 relative w-full aspect-square md:aspect-[4/3] bg-dd-ash rounded-sm overflow-hidden border border-dd-ash/30">
-               <img 
-                 src="/assets/images/hands_warm_light.png" 
-                 alt="Hands working in a warm kitchen environment" 
-                 className="w-full h-full object-cover"
-               />
-            </div>
-          </motion.div>
-
-
-
-          {/* Feature 3 */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp} 
-            className="flex flex-col md:flex-row gap-12 items-center"
-          >
-            <div className="md:w-1/2 space-y-6">
-               <div className="flex items-center gap-4">
-                 <div className="h-px bg-dd-ember w-8" />
-                 <span className="font-mono text-sm text-dd-bone/70 uppercase tracking-brand-caps">Full Operational Automation</span>
-               </div>
-               <h2 className="font-serif text-3xl md:text-5xl font-medium leading-[1.15]">
-                 Put every aspect of your short-term rentals on autopilot.
-               </h2>
-               <p className="text-lg text-dd-bone/80 leading-[1.6] max-w-md">
-                 From scheduling cleaners to managing maintenance requests and coordinating guest reviews, your digital employee seamlessly orchestrates the entire lifecycle of a reservation without human intervention.
-               </p>
-            </div>
-            <div className="md:w-1/2 relative w-full aspect-square md:aspect-[4/3] bg-dd-ash rounded-sm overflow-hidden border border-dd-ash/30">
-               <img 
-                 src="/assets/images/Tile_objects_in_light.png" 
-                 alt="Warm minimalist objects in light" 
-                 className="w-full h-full object-cover"
-               />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* ─── COMPARISON SECTION ─── */}
+      <ComparisonSection />
 
       <Threshold />
 
@@ -178,19 +117,19 @@ export default function Home() {
             {[
               {
                 quote: "DozalDevs handles all our late-night inquiries. I haven't woken up to an angry guest message in months.",
-                name: "Sarah Jenkins",
-                title: "Portfolio Manager, 24 Properties",
+                name: "Karem Lewis",
+                title: "Owner, 24 Rental Units",
                 image: "/assets/images/testimonial_1.png"
               },
               {
                 quote: "The automated lock management alone pays for itself. No more tracking down cleaner access codes.",
-                name: "Marcus Thorne",
+                name: "Mike Johnson",
                 title: "Boutique Hotel Owner",
                 image: "/assets/images/testimonial_2.png"
               },
               {
                 quote: "It actually sounds like me. Guests have no idea they are talking to an AI system.",
-                name: "Elena Rodriguez",
+                name: "Robert Rodriguez",
                 title: "Superhost, 8 Properties",
                 image: "/assets/images/testimonial_3.png"
               }
@@ -258,6 +197,9 @@ export default function Home() {
       </section>
 
       <Threshold />
+
+      {/* ─── APPROVAL ─── */}
+      <ApprovalSection />
 
       {/* ─── FAQ ─── */}
       <section className="py-24 px-6 md:px-12 max-w-3xl mx-auto w-full">

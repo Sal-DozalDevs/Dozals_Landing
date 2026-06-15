@@ -75,7 +75,7 @@ export default function CapabilitiesSection() {
 
       <div className="mt-12 text-left md:text-right">
         <p className="font-mono text-xs text-dd-bone/40 uppercase tracking-brand-caps italic">
-          Illustrative requests — these show the range of what you can ask for.
+          The range of what you can ask for, and more.
         </p>
       </div>
     </section>
