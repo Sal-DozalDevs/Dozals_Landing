@@ -24,7 +24,7 @@ export default function GHLCalendar() {
         src="https://go.dozaldevs.com/widget/booking/t70NOkaufqzLgfz7goTA"
         style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "600px" }}
         scrolling="no"
-        id="t70NOkaufqzLgfz7goTA_1781124190117"
+        id="t70NOkaufqzLgfz7goTA_1782158752498"
         className="bg-transparent w-full"
       />
     </div>
