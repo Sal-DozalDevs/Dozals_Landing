@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NEURO_TASK // Employees</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "surface-tint": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-fixed-dim": "#6b6b6b",
+                        "on-surface": "var(--dz-text)",
+                        "on-primary-fixed": "#FAFAFA",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "tertiary-fixed": "#d3e4fe",
+                        "outline-variant": "var(--dz-idle)",
+                        "inverse-surface": "#1a1a1a",
+                        "error": "#ffb4ab",
+                        "primary-fixed": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "on-secondary": "#313030",
+                        "surface-variant": "var(--dz-border-soft)",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-container-lowest": "#FAFAFA",
+                        "inverse-on-surface": "#FAFAFA",
+                        "surface-dim": "#F0F0F0",
+                        "on-secondary-fixed-variant": "#474746",
+                        "primary-fixed-dim": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "tertiary": "#FFFFFF",
+                        "surface-bright": "#FFFFFF",
+                        "tertiary-container": "#d3e4fe",
+                        "on-primary-container": "#FAFAFA",
+                        "on-error": "#690005",
+                        "secondary": "var(--dz-text-secondary)",
+                        "on-primary-fixed-variant": "#FAFAFA",
+                        "primary-container": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "on-secondary-container": "#4a4a4a",
+                        "on-primary": "#FAFAFA",
+                        "primary": "var(--dz-text)",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#4a4a4a",
+                        "on-background": "var(--dz-text)",
+                        "background": "var(--dz-bg)",
+                        "surface": "var(--dz-surface)",
+                        "on-tertiary-container": "#56657c",
+                        "inverse-primary": "#FAFAFA",
+                        "surface-container-highest": "#E5E5E5",
+                        "surface-container-high": "#EAEAEA",
+                        "on-surface-variant": "var(--dz-text-muted)",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface-container-low": "#F5F5F5",
+                        "on-tertiary": "#213145",
+                        "outline": "var(--dz-border-strong)",
+                        "surface-container": "var(--dz-surface-dim)",
+                        "secondary-container": "#E5E5E5",
+                        "accent-2": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-color-2-rgb), ${opacityValue})` : 'var(--dz-color-2)',
+                        "accent-3": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-color-3-rgb), ${opacityValue})` : 'var(--dz-color-3)'
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "container-padding": "24px",
+                        "unit": "16px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Lora", "serif"],
+                        "body-lg": ["Work Sans", "sans-serif"],
+                        "headline-md": ["Lora", "serif"],
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Work Sans", "sans-serif"],
+                        "data-point": ["JetBrains Mono", "monospace"],
+                        "headline-lg": ["Lora", "serif"],
+                        "headline-lg-mobile": ["Lora", "serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "data-point": ["14px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --dz-accent: #D0342C; --dz-accent-rgb: 208, 52, 44;
+            --dz-color-1: #D0342C; --dz-color-1-rgb: 208, 52, 44;
+            --dz-color-2: #8A2A22; --dz-color-2-rgb: 138, 42, 34;
+            --dz-color-3: #3A1A18; --dz-color-3-rgb: 58, 26, 24;
+            --dz-bg: #FAFAFA;
+            --dz-surface: #FFFFFF; --dz-surface-rgb: 255, 255, 255; --dz-surface-border-rgb: 0, 0, 0;
+            --dz-surface-dim: #F0F0F0;
+            --dz-text: #1a1a1a; --dz-text-secondary: #6b6b6b; --dz-text-muted: #5a5a5a;
+            --dz-overlay-rgb: 0, 0, 0;
+            --dz-border-soft: #E5E5E5; --dz-border-strong: #D0D0D0;
+            --dz-track: #f3f4f6; --dz-track-text: #6b7280; --dz-idle: #D0D0D0;
+        }
+        .dark {
+            --dz-bg: #0A0A0A;
+            --dz-surface: #18181b; --dz-surface-rgb: 24, 24, 27; --dz-surface-border-rgb: 255, 255, 255;
+            --dz-surface-dim: #1f1f23;
+            --dz-text: #FAFAFA; --dz-text-secondary: #a1a1aa; --dz-text-muted: #8a8a8a;
+            --dz-overlay-rgb: 255, 255, 255;
+            --dz-border-soft: #27272a; --dz-border-strong: #3f3f46;
+            --dz-track: #27272a; --dz-track-text: #8a8a8a; --dz-idle: #52525b;
+        }
+        body {
+            background-color: var(--dz-bg);
+            color: var(--dz-text);
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(var(--dz-surface-rgb), 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(var(--dz-surface-border-rgb), 0.08);
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent 0%, rgba(var(--dz-accent-rgb), 0.1) 50%, transparent 100%);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: -100%;
+            left: 0;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(var(--dz-accent-rgb), 0.3);
+        }
+        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-work-sans { font-family: 'Work Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar-thumb { background: var(--dz-accent); }
+        ::-webkit-scrollbar-track { background: transparent; }
+
+        /* Employees page decorative animations */
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.7; }
+        }
+        .pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+        @keyframes bar-rise {
+            0% { transform: scaleY(0.2); }
+            50% { transform: scaleY(1); }
+            100% { transform: scaleY(0.4); }
+        }
+        .activity-bar {
+            transform-origin: bottom;
+            animation: bar-rise 2.4s ease-in-out infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track { animation: marquee 38s linear infinite; }
+    </style>
+    <script>!function(){try{'dark'===localStorage.getItem('dz-theme')&&document.documentElement.classList.add('dark')}catch(e){}}()</script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-fixed-dim/30 selection:text-white" data-mode="connect">
+
+    <!-- Side Navigation Rail -->
+    <nav class="fixed left-unit top-unit bottom-unit w-64 transition-all duration-300 rounded-lg glass-panel z-50 flex flex-col overflow-hidden group" style="transform: scale(1);">
+        <div class="p-6 mb-8 flex items-center gap-4 overflow-hidden whitespace-nowrap">
+            <img src="DozalDevs_Primary_Mono_Black.svg" alt="DozalDevs" class="h-10">
+        </div>
+        <div class="flex-1 flex flex-col gap-2 px-4">
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="dashboard.html">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span class="font-label-mono text-label-mono transition-opacity">DASHBOARD</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-primary-fixed-dim border-l-2 border-primary-fixed-dim bg-primary-fixed-dim/10 transition-all" href="employees.html">
+                <span class="material-symbols-outlined">bolt</span>
+                <span class="font-label-mono text-label-mono transition-opacity">EMPLOYEES</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-label-mono text-label-mono transition-opacity">INTEGRATIONS</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">sync</span>
+                <span class="font-label-mono text-label-mono transition-opacity">SYNC APPS</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">folder_open</span>
+                <span class="font-label-mono text-label-mono transition-opacity">ORGANIZATION</span>
+            </a>
+        </div>
+        <div class="mt-auto p-4 flex flex-col gap-2 border-t border-[rgba(var(--dz-overlay-rgb),0.05)]">
+            <a href="/" class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all group/home">
+                <span class="material-symbols-outlined transition-transform group-hover/home:-translate-x-0.5">home</span>
+                <span class="font-label-mono text-label-mono transition-opacity">Back to Home</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-mono text-label-mono transition-opacity">Settings</span>
+            </a>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-primary-fixed/30 bg-surface-container">
+                    <img onerror="this.style.display='none'" class="w-full h-full object-cover" data-alt="Operator avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmpGsHoqVBd5drfxhi5WTrhKJX0hneASKFLcpS1FSmnGFLq8JmlsvTfo_7PHWBu5Fn8AP9Torq26wbAjJf8wzWtYWOT5MnbKzOaDJCOzEd58LdvMh1x8e6FTj3kLDaLJ8UWZmDIlwcFhvPwRXuc_h8T7nNES7WicdvfI6ykZm7zuFQbeL29u9LJVm95PV51qe94oIozRKrD3GXNaFh8esNUIwkCCjpkukUKLxaPp0SWkzskWhkhGaSQNaSyAnyBPVCFG6AWbMzCLQ" alt="Operator">
+                </div>
+                <div class="flex flex-col transition-opacity">
+                    <span class="font-label-mono text-label-mono text-on-surface">USER NAME</span>
+                    <span class="font-label-mono text-[10px] text-primary-fixed">v4.0.2</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Controls -->
+    <div class="fixed top-unit left-1/2 -translate-x-1/2 z-50 flex items-center">
+        <button class="hidden sm:block px-6 py-2 bg-transparent border border-primary-fixed text-primary-fixed font-label-mono text-label-mono hover:bg-primary-fixed hover:text-background transition-all active:scale-95 glow-hover" id="create-task">Create New Employee</button>
+    </div>
+    <div class="fixed top-unit z-50 flex items-center" style="left:1780px;transform:translateX(-100%);">
+        <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded border border-[rgba(var(--dz-overlay-rgb),0.1)] hover:border-primary-fixed/50 transition-colors text-secondary hover:text-primary-fixed">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 pl-[280px] pr-unit min-h-screen pb-12 flex flex-col">
+        <div class="max-w-[1600px] mx-auto w-full flex-1 flex flex-col">
+
+            <!-- Page Header / Hero -->
+            <section class="glass-panel rounded-xl px-8 py-6 mb-8 relative overflow-hidden flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_10px_var(--dz-accent)] pulse-dot"></span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed tracking-widest">ROSTER // LIVE</span>
+                    </div>
+                    <h1 class="font-display-lg text-headline-lg tracking-tight text-primary mb-1">Employees</h1>
+                    <p class="font-body-md text-sm text-secondary max-w-md">Autonomous workforce roster. Each employee is a goal-driven agent wired into your tooling — built, monitored, and iterated from here.</p>
+                </div>
+                <div class="relative z-10 flex items-center gap-8 flex-wrap">
+                    <div>
+                        <p class="font-label-mono text-[10px] text-secondary mb-1">DEPLOYED</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-jetbrains text-3xl text-primary leading-none">06</span>
+                            <span class="text-primary-fixed-dim text-[10px] font-label-mono">AGENTS</span>
+                        </div>
+                    </div>
+                    <div class="w-px h-12 bg-[rgba(var(--dz-overlay-rgb),0.1)]"></div>
+                    <div>
+                        <p class="font-label-mono text-[10px] text-secondary mb-1">STATUS</p>
+                        <div class="flex items-center gap-2">
+                            <span class="font-jetbrains text-3xl text-primary leading-none">05</span>
+                            <span class="text-primary-fixed-dim text-[10px] font-label-mono">ONLINE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="scan-line opacity-10"></div>
+            </section>
+
+            <!-- Thin Horizontal KPI Bar -->
+            <section class="flex flex-col md:flex-row flex-wrap md:flex-nowrap gap-4 mb-8">
+                <!-- KPI 1 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">bolt</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">ACTIVE EMPLOYEES</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">05/06</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">ONLINE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex gap-1">
+                        <div class="w-1.5 h-1.5 rounded-sm bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-accent-2 shadow-[0_0_8px_var(--dz-color-2)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-accent-3 shadow-[0_0_8px_var(--dz-color-3)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-[rgba(var(--dz-overlay-rgb),0.1)]"></div>
+                    </div>
+                </div>
+                <!-- KPI 2 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">timer</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">AVG RESPONSE</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">1.4</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">SECONDS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_down</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">-22%</span>
+                    </div>
+                </div>
+                <!-- KPI 3 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">token</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">TOKEN USAGE</p>
+                            <span class="font-jetbrains text-xl text-primary leading-none">421,887</span>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_up</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">+14%</span>
+                    </div>
+                </div>
+                <!-- KPI 4 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">check_circle</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">TASKS COMPLETED</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">2,140</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">TOTAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_up</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">+18%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Immersive Focus Layout -->
+            <div class="flex flex-col lg:flex-row gap-6 flex-1">
+                <!-- Large Hero Task Area -->
+                <section class="flex-1 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-display-lg text-headline-md tracking-widest text-primary border-l-4 border-primary-fixed pl-4">MAIN</h3>
+                        <div class="flex items-center gap-2 font-label-mono text-[10px] text-secondary">
+                            <span class="material-symbols-outlined text-sm text-primary-fixed">groups</span>
+                            <span>06 EMPLOYEES</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 content-start">
+                        <!-- Release Card 1 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">01</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">DEC|25</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">ROCKY</h4>
+                                    <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans">META assitant, reads and answer customer questions. Escalate issues via WhatsApp.</p>
+                                </div>
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex -space-x-2.5">
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#0866FF" title="Meta">
+                                            <img src="https://cdn.simpleicons.org/meta/white" class="w-4 h-4" alt="Meta">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#25D366" title="WhatsApp">
+                                            <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-4 h-4" alt="WhatsApp">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-xs text-secondary shadow-sm transition-transform group-hover:-translate-y-0.5">+5</div>
+                                    </div>
+<button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>Open</span>
+                                         <span class="material-symbols-outlined text-base">open_in_new</span>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Release Card 2 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">02</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">JAN|26</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">/Employee_Name</h4>
+                                    <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans">/Description of the employee's role or responsibilities</p>
+                                </div>
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex -space-x-2.5">
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#111111" title="Notion">
+                                            <img src="https://cdn.simpleicons.org/notion/white" class="w-4 h-4" alt="Notion">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#4285F4" title="Google">
+                                            <img src="https://cdn.simpleicons.org/google/white" class="w-4 h-4" alt="Google">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-xs text-secondary shadow-sm transition-transform group-hover:-translate-y-0.5">+5</div>
+                                    </div>
+<button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>Open</span>
+                                         <span class="material-symbols-outlined text-base">open_in_new</span>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Release Card 3 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">03</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">FEB|26</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">ROBO</h4>
+                                    <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans">Handles AirBnB units. Coordinates with cleaning crews and door lock management after guest checkout.</p>
+                                </div>
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex -space-x-2.5">
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#FF5A5F" title="Airbnb">
+                                            <img src="https://cdn.simpleicons.org/airbnb/white" class="w-4 h-4" alt="Airbnb">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#4285F4" title="Google Calendar">
+                                            <img src="https://cdn.simpleicons.org/googlecalendar/white" class="w-4 h-4" alt="Google Calendar">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-xs text-secondary shadow-sm transition-transform group-hover:-translate-y-0.5">+3</div>
+                                    </div>
+<button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>Open</span>
+                                         <span class="material-symbols-outlined text-base">open_in_new</span>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Release Card 4 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">04</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">MAR|26</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">MILLY</h4>
+                                    <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans">Sends personalized promotions to customers via WhatsApp. Communicates with Calendar for scheduling.</p>
+                                </div>
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex -space-x-2.5">
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#25D366" title="WhatsApp">
+                                            <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-4 h-4" alt="WhatsApp">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#4285F4" title="Google Calendar">
+                                            <img src="https://cdn.simpleicons.org/googlecalendar/white" class="w-4 h-4" alt="Google Calendar">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-xs text-secondary shadow-sm transition-transform group-hover:-translate-y-0.5">+5</div>
+                                    </div>
+<button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>Open</span>
+                                         <span class="material-symbols-outlined text-base">open_in_new</span>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Release Card 5 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">05</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">JUN|26</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">FURY</h4>
+                                    <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans">Manages appointments and schedules. New appointments, cancellations, and rescheduling.</p>
+                                </div>
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex -space-x-2.5">
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#4285F4" title="Google Calendar">
+                                            <img src="https://cdn.simpleicons.org/googlecalendar/white" class="w-4 h-4" alt="Google Calendar">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm transition-transform group-hover:-translate-y-0.5" style="background:#006BFF" title="Calendly">
+                                            <img src="https://cdn.simpleicons.org/calendly/white" class="w-4 h-4" alt="Calendly">
+                                        </div>
+                                        <div class="w-9 h-9 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-xs text-secondary shadow-sm transition-transform group-hover:-translate-y-0.5">+3</div>
+                                    </div>
+<button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>Open</span>
+                                         <span class="material-symbols-outlined text-base">open_in_new</span>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Release Card 6 -->
+                        <div class="bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                        <span class="text-primary-fixed tracking-widest text-xs opacity-90">06</span>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">FEEDBACK</span>
+                                            <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide">JULY 22, 2026</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">Building...</h4>
+                                </div>
+                                <!-- Stepper Animation -->
+                                <div id="stepper-card-6" class="flex flex-col items-center justify-center w-full pt-2">
+                                    <div class="flex items-center mb-6">
+                                        <div class="stepper-node relative flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium overflow-hidden" data-step="1" style="background: linear-gradient(to right, var(--dz-accent) 0%, var(--dz-track) 0%); color: var(--dz-track-text);"><span class="relative z-10">1</span></div>
+                                        <div class="stepper-line h-[3px] w-12 bg-[var(--dz-track)] relative overflow-hidden"><div class="stepper-line-fill absolute top-0 left-0 h-full bg-primary-fixed" data-line="0" style="width: 0%"></div></div>
+                                        <div class="stepper-node relative flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium overflow-hidden" data-step="2" style="background: linear-gradient(to right, var(--dz-accent) 0%, var(--dz-track) 0%); color: var(--dz-track-text);"><span class="relative z-10">2</span></div>
+                                        <div class="stepper-line h-[3px] w-12 bg-[var(--dz-track)] relative overflow-hidden"><div class="stepper-line-fill absolute top-0 left-0 h-full bg-primary-fixed" data-line="1" style="width: 0%"></div></div>
+                                        <div class="stepper-node relative flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium overflow-hidden" data-step="3" style="background: linear-gradient(to right, var(--dz-accent) 0%, var(--dz-track) 0%); color: var(--dz-track-text);"><span class="relative z-10">3</span></div>
+                                        <div class="stepper-line h-[3px] w-12 bg-[var(--dz-track)] relative overflow-hidden"><div class="stepper-line-fill absolute top-0 left-0 h-full bg-primary-fixed" data-line="2" style="width: 0%"></div></div>
+                                        <div class="stepper-node relative flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium overflow-hidden" data-step="4" style="background: linear-gradient(to right, var(--dz-accent) 0%, var(--dz-track) 0%); color: var(--dz-track-text);"><span class="relative z-10">4</span></div>
+                                    </div>
+                                    <div class="flex flex-col items-center w-full text-center">
+                                        <p id="stepper-status-text" class="text-on-surface font-semibold text-base min-h-[24px] mb-1">System ready</p>
+                                        <p id="stepper-progress-text" class="text-secondary text-xs min-h-[18px]">Awaiting start command</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Roster Status Sidebar -->
+                <aside class="w-full lg:w-96 flex flex-col gap-4">
+                    <div class="flex items-center justify-between mb-2 md:mb-4 h-8">
+                        <h3 class="font-display-lg text-sm tracking-widest text-secondary">| ROSTER</h3>
+                        <div class="flex gap-2">
+                            <button class="font-label-mono text-[10px] text-primary-fixed border border-primary-fixed/20 px-2 py-1 hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-colors rounded">FILTER</button>
+                            <button class="font-label-mono text-[10px] text-secondary hover:text-primary transition-colors px-2 py-1">SORT</button>
+                        </div>
+                    </div>
+
+                    <!-- Roster status list -->
+                    <div class="glass-panel p-5 rounded-xl flex flex-col gap-3">
+                        <p class="font-label-mono text-[10px] text-secondary mb-1">STATUS BREAKDOWN</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></span>
+                                <span class="font-work-sans text-sm text-on-surface">Online</span>
+                            </div>
+                            <span class="font-jetbrains text-sm text-primary-fixed">05</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-[var(--dz-idle)]"></span>
+                                <span class="font-work-sans text-sm text-on-surface">Idle</span>
+                            </div>
+                            <span class="font-jetbrains text-sm text-secondary">00</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-primary-fixed/40 animate-pulse"></span>
+                                <span class="font-work-sans text-sm text-on-surface">Building</span>
+                            </div>
+                            <span class="font-jetbrains text-sm text-primary-fixed">01</span>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] my-1">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-[10px] text-secondary">CAPACITY USED</span>
+                            <span class="font-label-mono text-[10px] text-primary-fixed">83%</span>
+                        </div>
+                        <div class="h-1.5 bg-[rgba(var(--dz-overlay-rgb),0.05)] rounded-full overflow-hidden">
+                            <div class="h-full bg-primary-fixed shadow-[0_0_10px_rgba(var(--dz-accent-rgb),0.5)] relative" style="width: 83%">
+                                <div class="scan-line opacity-20"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Pulse -->
+                    <div class="glass-panel p-5 rounded-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <p class="font-label-mono text-[10px] text-secondary">ACTIVITY PULSE</p>
+                            <span class="font-label-mono text-[10px] text-primary-fixed">LIVE</span>
+                        </div>
+                        <div class="flex items-end gap-1 h-16 w-full">
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/30 rounded-t" style="animation-delay: 0s; height: 40%;"></div>
+                            <div class="activity-bar flex-1 bg-accent-2/40 rounded-t" style="animation-delay: 0.2s; height: 70%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/30 rounded-t" style="animation-delay: 0.4s; height: 55%;"></div>
+                            <div class="activity-bar flex-1 bg-accent-3/50 rounded-t" style="animation-delay: 0.1s; height: 85%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/70 rounded-t" style="animation-delay: 0.3s; height: 100%;"></div>
+                            <div class="activity-bar flex-1 bg-accent-2/40 rounded-t" style="animation-delay: 0.5s; height: 60%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/30 rounded-t" style="animation-delay: 0.2s; height: 45%;"></div>
+                            <div class="activity-bar flex-1 bg-accent-3/50 rounded-t" style="animation-delay: 0.4s; height: 75%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/60 rounded-t" style="animation-delay: 0.1s; height: 90%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/40 rounded-t" style="animation-delay: 0.3s; height: 65%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/30 rounded-t" style="animation-delay: 0.5s; height: 50%;"></div>
+                            <div class="activity-bar flex-1 bg-primary-fixed-dim/50 rounded-t" style="animation-delay: 0s; height: 80%;"></div>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="font-label-mono text-[10px] text-secondary">REQUESTS / MIN</span>
+                            <span class="font-jetbrains text-sm text-primary-fixed">142</span>
+                        </div>
+                    </div>
+
+                    <!-- Integrations marquee strip -->
+                    <div class="glass-panel p-4 rounded-xl overflow-hidden">
+                        <p class="font-label-mono text-[10px] text-secondary mb-3">CONNECTED TOOLING</p>
+                        <div class="relative overflow-hidden whitespace-nowrap">
+                            <div class="marquee-track inline-flex gap-6 items-center">
+                                <span class="font-label-mono text-[10px] text-secondary">META</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">WHATSAPP</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">AIRBNB</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">GOOGLE_CALENDAR</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">CALENDLY</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">NOTION</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">GOOGLE</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">META</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">WHATSAPP</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">AIRBNB</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">GOOGLE_CALENDAR</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">CALENDLY</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">NOTION</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                                <span class="font-label-mono text-[10px] text-secondary">GOOGLE</span>
+                                <span class="text-[rgba(var(--dz-overlay-rgb),0.1)]">|</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- What others are doing — community showcase -->
+            <section class="mt-8 flex flex-col" data-section="What Others Are Doing">
+                <div class="flex items-end justify-between mb-4 gap-4 flex-wrap">
+                    <div class="flex items-end gap-3">
+                        <h3 class="font-display-lg text-headline-md tracking-widest text-primary border-l-4 border-primary-fixed pl-4">What others are doing</h3>
+                        <span class="font-label-mono text-[10px] text-secondary pb-1">COMMUNITY // LIVE FEED</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button data-woad-scroll="left" aria-label="Scroll feed left" class="w-9 h-9 rounded-md border border-[rgba(var(--dz-overlay-rgb),0.1)] bg-surface text-secondary hover:text-primary-fixed hover:border-primary-fixed/40 transition-colors flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed">
+                            <span class="material-symbols-outlined text-base">chevron_left</span>
+                        </button>
+                        <button data-woad-scroll="right" aria-label="Scroll feed right" class="w-9 h-9 rounded-md border border-[rgba(var(--dz-overlay-rgb),0.1)] bg-surface text-secondary hover:text-primary-fixed hover:border-primary-fixed/40 transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined text-base">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="woad-track" class="flex gap-4 overflow-x-auto pb-4 pr-unit snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <!-- Showcase Card 1 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 01</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Sofía</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">SUPPORT</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Answers Shopify customer questions, processes refunds, and escalates edge cases via Slack.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#7AB55C" title="Shopify"><img src="https://cdn.simpleicons.org/shopify/white" class="w-3.5 h-3.5" alt="Shopify"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#E01E5A" title="Slack"><img src="https://cdn.simpleicons.org/slack/white" class="w-3.5 h-3.5" alt="Slack"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#EA4335" title="Gmail"><img src="https://cdn.simpleicons.org/gmail/white" class="w-3.5 h-3.5" alt="Gmail"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@maria_coops</span></span>
+                            <span class="text-primary-fixed">▲ 12K msgs</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 2 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 02</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Pipeline</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">SDR</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Qualifies inbound leads, enriches them, and books demos on the founder's calendar.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#FF7A59" title="HubSpot"><img src="https://cdn.simpleicons.org/hubspot/white" class="w-3.5 h-3.5" alt="HubSpot"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#006BFF" title="Calendly"><img src="https://cdn.simpleicons.org/calendly/white" class="w-3.5 h-3.5" alt="Calendly"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#0A66C2" title="LinkedIn"><img src="https://cdn.simpleicons.org/linkedin/white" class="w-3.5 h-3.5" alt="LinkedIn"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@tom_growth</span></span>
+                            <span class="text-primary-fixed">▲ 38 demos</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 3 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 03</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Ledger</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">FINANCE</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Categorizes expenses, matches receipts, and drafts month-end close notes in Notion.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#2D41B7" title="QuickBooks"><img src="https://cdn.simpleicons.org/quickbooks/white" class="w-3.5 h-3.5" alt="QuickBooks"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#635BFF" title="Stripe"><img src="https://cdn.simpleicons.org/stripe/white" class="w-3.5 h-3.5" alt="Stripe"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#111111" title="Notion"><img src="https://cdn.simpleicons.org/notion/white" class="w-3.5 h-3.5" alt="Notion"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@anna_ops</span></span>
+                            <span class="text-primary-fixed">▲ 4.2K txns</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 4 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 04</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Sentry</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">ENGINEERING</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Reviews pull requests, runs tests, and opens Linear issues for failing checks.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#181717" title="GitHub"><img src="https://cdn.simpleicons.org/github/white" class="w-3.5 h-3.5" alt="GitHub"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#5E6AD2" title="Linear"><img src="https://cdn.simpleicons.org/linear/white" class="w-3.5 h-3.5" alt="Linear"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#E01E5A" title="Slack"><img src="https://cdn.simpleicons.org/slack/white" class="w-3.5 h-3.5" alt="Slack"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@dev_shop</span></span>
+                            <span class="text-primary-fixed">▲ 156 PRs</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 5 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 05</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Stockboy</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">RETAIL</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Watches Shopify inventory and auto-reorders from the Airtable supplier sheet.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#7AB55C" title="Shopify"><img src="https://cdn.simpleicons.org/shopify/white" class="w-3.5 h-3.5" alt="Shopify"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#FCB400" title="Airtable"><img src="https://cdn.simpleicons.org/airtable/white" class="w-3.5 h-3.5" alt="Airtable"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#EA4335" title="Gmail"><img src="https://cdn.simpleicons.org/gmail/white" class="w-3.5 h-3.5" alt="Gmail"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@clara_retail</span></span>
+                            <span class="text-primary-fixed">▲ 7 stores</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 6 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 06</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Dispatcher</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">LOGISTICS</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Routes same-day deliveries, notifies drivers, and posts ETAs back to customers.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#19C4B7" title="Onfleet"><img src="https://cdn.simpleicons.org/onfleet/white" class="w-3.5 h-3.5" alt="Onfleet"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#F22F46" title="Twilio"><img src="https://cdn.simpleicons.org/twilio/white" class="w-3.5 h-3.5" alt="Twilio"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#0F9D58" title="Google Sheets"><img src="https://cdn.simpleicons.org/googlesheets/white" class="w-3.5 h-3.5" alt="Google Sheets"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@mike_logistics</span></span>
+                            <span class="text-primary-fixed">▲ 240 drops</span>
+                        </div>
+                    </article>
+
+                    <!-- Showcase Card 7 -->
+                    <article class="woad-card glass-panel rounded-xl p-5 w-[320px] flex-shrink-0 snap-start flex flex-col gap-3 transition-all duration-300 ease-out hover:border-primary-fixed/40 group cursor-default font-work-sans relative">
+                        <div class="flex items-center justify-between font-jetbrains">
+                            <span class="text-primary-fixed tracking-widest text-[11px] opacity-90">// 07</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)] pulse-dot"></span>
+                                <span class="text-[10px] text-primary-fixed tracking-widest">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h4 class="text-xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight">Curator</h4>
+                            <span class="font-label-mono text-[10px] text-secondary">MARKETING</span>
+                        </div>
+                        <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Saves trending posts, drafts captions, and schedules weekly newsletters.</p>
+                        <div class="flex -space-x-2 pt-1">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#F00073" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/white" class="w-3.5 h-3.5" alt="Instagram"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#FF5A1F" title="Mailchimp"><img src="https://cdn.simpleicons.org/mailchimp/white" class="w-3.5 h-3.5" alt="Mailchimp"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden relative flex items-center justify-center shadow-sm" style="background:#111111" title="Notion"><img src="https://cdn.simpleicons.org/notion/white" class="w-3.5 h-3.5" alt="Notion"></div>
+                        </div>
+                        <hr class="border-[rgba(var(--dz-overlay-rgb),0.05)] mt-1">
+                        <div class="flex items-center justify-between font-label-mono text-[10px]">
+                            <span class="text-secondary">by <span class="text-on-surface">@lara_content</span></span>
+                            <span class="text-primary-fixed">▲ 9 edits</span>
+                        </div>
+                    </article>
+
+                    <!-- CTA Card -->
+                    <article class="woad-card rounded-xl p-5 w-[280px] flex-shrink-0 snap-start flex flex-col justify-center items-center text-center gap-3 transition-all duration-300 ease-out group cursor-pointer font-work-sans bg-surface/40 border-2 border-dashed border-primary-fixed/30 hover:bg-surface hover:border-primary-fixed hover:shadow-[0_8px_30px_rgba(var(--dz-accent-rgb),0.12)] min-h-[200px]">
+                        <div class="w-12 h-12 rounded-full bg-primary-fixed/10 text-primary-fixed flex items-center justify-center group-hover:bg-primary-fixed group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">add</span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight mb-1">Create yours</h4>
+                            <p class="text-xs text-secondary leading-relaxed font-medium font-work-sans">Spin up an employee and show up here next.</p>
+                        </div>
+                        <span class="font-label-mono text-[10px] text-primary-fixed tracking-widest pt-1">START BUILDING →</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Decorative Data Visualization Layer -->
+            <section class="mt-8 h-24 relative glass-panel rounded-xl overflow-hidden group hidden sm:block" style="transform: scale(1);">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="h-full w-full bg-[linear-gradient(90deg,rgba(var(--dz-accent-rgb),0.1)_1px,transparent_1px),linear-gradient(rgba(var(--dz-accent-rgb),0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                </div>
+                <div class="absolute inset-0 p-4 flex flex-col justify-end">
+                    <div class="flex items-end gap-1 h-10 w-full overflow-hidden opacity-50">
+                        <div class="w-3 bg-primary-fixed-dim/20 h-[30%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[60%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/30 h-[45%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/50 h-[80%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/60 h-[100%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[55%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/20 h-[25%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/30 h-[40%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/50 h-[70%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/70 h-[95%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[60%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/30 h-[45%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/50 h-[80%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/60 h-[100%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[55%]"></div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2 relative z-10">
+                        <span class="font-label-mono text-[10px] text-secondary">ROSTER_THROUGHPUT_STREAM</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">TASKS/MIN: 22.4</span>
+                    </div>
+                </div>
+                <div class="scan-line opacity-5"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Interactive FAB (Mobile/Alternate) -->
+    <button id="create-task-mobile" class="fixed bottom-6 right-6 w-14 h-14 bg-primary-fixed text-background rounded-full shadow-[0_0_20px_rgba(var(--dz-accent-rgb),0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 sm:hidden">
+        <span class="material-symbols-outlined text-3xl">add</span>
+    </button>
+
+    <script>
+        // Simple micro-interactions
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                if(window.innerWidth > 768) {
+                    card.style.transform = 'scale(0.99)';
+                }
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Custom Notification System (Replaces Alert)
+        const showNotification = (message) => {
+            const modal = document.getElementById('system-modal');
+            if (!modal) return;
+            const text = document.getElementById('system-modal-text');
+            if (text) text.textContent = message;
+
+            modal.classList.remove('translate-x-[150%]', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('translate-x-[150%]', 'opacity-0');
+            }, 3500);
+        };
+
+        const handleCreateTask = () => {
+            const id = Math.floor(Math.random() * 9000) + 1000;
+            console.log(`Initiating Neural Task Instance #${id}`);
+            showNotification(`NEURAL_TASK: Initiating instance node #${id}...`);
+        };
+
+        const createBtn = document.getElementById('create-task');
+        if(createBtn) createBtn.addEventListener('click', handleCreateTask);
+
+        const createBtnMobile = document.getElementById('create-task-mobile');
+        if(createBtnMobile) createBtnMobile.addEventListener('click', handleCreateTask);
+
+        // Stepper Animation (Card 6)
+        let stepperProgress = 0;
+        let stepperStatus = 'idle';
+        let stepperFrameId = null;
+        let stepperStartTime = null;
+        const stepperDuration = 60000;
+
+        const getFill = (p, start, end) => {
+            if (p <= start) return 0;
+            if (p >= end) return 100;
+            return ((p - start) / (end - start)) * 100;
+        };
+
+        function renderStepper() {
+            const nodes = document.querySelectorAll('#stepper-card-6 .stepper-node');
+            const lines = document.querySelectorAll('#stepper-card-6 .stepper-line-fill');
+            nodes.forEach((node, index) => {
+                const nodeStart = index * 30;
+                const nodeEnd = nodeStart + 10;
+                const nodeFill = getFill(stepperProgress, nodeStart, nodeEnd);
+                node.style.background = `linear-gradient(to right, var(--dz-accent) ${nodeFill}%, var(--dz-track) ${nodeFill}%)`;
+                node.style.color = nodeFill > 50 ? 'white' : 'var(--dz-track-text)';
+                if (nodeFill === 100) {
+                    node.innerHTML = '<svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>';
+                } else {
+                    node.innerHTML = `<span class="relative z-10">${index + 1}</span>`;
+                }
+            });
+            lines.forEach((line, index) => {
+                const lineStart = index * 30 + 10;
+                const lineEnd = lineStart + 20;
+                const lineFill = getFill(stepperProgress, lineStart, lineEnd);
+                line.style.width = `${lineFill}%`;
+            });
+
+            let statusText = 'System ready';
+            if (stepperStatus === 'running') {
+                if (stepperProgress < 10) statusText = 'Initializing...';
+                else if (stepperProgress < 30) statusText = 'Interpreting Instructions...';
+                else if (stepperProgress < 40) statusText = 'Communicating with server...';
+                else if (stepperProgress < 60) statusText = 'Testing capabilities...';
+                else if (stepperProgress < 70) statusText = 'Submitting...';
+                else if (stepperProgress < 90) statusText = 'Delivering...';
+                else if (stepperProgress < 100) statusText = 'Finalizing configuration...';
+            } else if (stepperStatus === 'completed') {
+                statusText = 'Task completed successfully!';
+            }
+
+            const statusEl = document.getElementById('stepper-status-text');
+            const progressEl = document.getElementById('stepper-progress-text');
+            if (statusEl) statusEl.textContent = statusText;
+            if (progressEl) {
+                if (stepperStatus === 'running') progressEl.textContent = `${Math.floor(stepperProgress)}% processing`;
+                else if (stepperStatus === 'completed') progressEl.textContent = '100% processing';
+                else progressEl.textContent = 'Awaiting start command';
+            }
+
+            const stepperCard = document.getElementById('stepper-card-6');
+            if (stepperCard) stepperCard.style.cursor = stepperStatus === 'completed' ? 'pointer' : 'default';
+        }
+
+        function stepperAnimate(timestamp) {
+            if (!stepperStartTime) stepperStartTime = timestamp;
+            const elapsed = timestamp - stepperStartTime;
+            stepperProgress = Math.min((elapsed / stepperDuration) * 100, 100);
+            renderStepper();
+            if (stepperProgress < 100) {
+                stepperFrameId = requestAnimationFrame(stepperAnimate);
+            } else {
+                stepperStatus = 'completed';
+                renderStepper();
+            }
+        }
+
+        function stepperStart() {
+            stepperProgress = 0;
+            stepperStatus = 'running';
+            stepperStartTime = null;
+            if (stepperFrameId) cancelAnimationFrame(stepperFrameId);
+            renderStepper();
+            stepperFrameId = requestAnimationFrame(stepperAnimate);
+        }
+
+        document.getElementById('stepper-card-6').addEventListener('click', function() {
+            stepperStart();
+        });
+
+        stepperStart();
+
+        // "What others are doing" — horizontal scroll controls
+        (function () {
+            const track = document.getElementById('woad-track');
+            if (!track) return;
+            const STEP = 340; // card width + gap
+            const leftBtn = document.querySelector('[data-woad-scroll="left"]');
+            const rightBtn = document.querySelector('[data-woad-scroll="right"]');
+            const syncButtons = () => {
+                if (leftBtn) leftBtn.disabled = track.scrollLeft <= 2;
+                if (rightBtn) rightBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+            };
+            const scrollBy = (dir) => track.scrollBy({ left: dir * STEP, behavior: 'smooth' });
+            if (leftBtn) leftBtn.addEventListener('click', () => scrollBy(-1));
+            if (rightBtn) rightBtn.addEventListener('click', () => scrollBy(1));
+            track.addEventListener('scroll', syncButtons, { passive: true });
+            window.addEventListener('resize', syncButtons);
+            syncButtons();
+        })();
+    </script>
+
+    <!-- Color Lab: live palette / harmony play-box -->
+    <script src="color-lab.js" defer></script>
+</body>
+</html>

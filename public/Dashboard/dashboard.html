@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NEURO_TASK // Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "surface-tint": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-fixed-dim": "#6b6b6b",
+                        "on-surface": "var(--dz-text)",
+                        "on-primary-fixed": "#FAFAFA",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "tertiary-fixed": "#d3e4fe",
+                        "outline-variant": "var(--dz-idle)",
+                        "inverse-surface": "#1a1a1a",
+                        "error": "#ffb4ab",
+                        "primary-fixed": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "on-secondary": "#313030",
+                        "surface-variant": "var(--dz-border-soft)",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-container-lowest": "#FAFAFA",
+                        "inverse-on-surface": "#FAFAFA",
+                        "surface-dim": "#F0F0F0",
+                        "on-secondary-fixed-variant": "#474746",
+                        "primary-fixed-dim": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "tertiary": "#FFFFFF",
+                        "surface-bright": "#FFFFFF",
+                        "tertiary-container": "#d3e4fe",
+                        "on-primary-container": "#FAFAFA",
+                        "on-error": "#690005",
+                        "secondary": "var(--dz-text-secondary)",
+                        "on-primary-fixed-variant": "#FAFAFA",
+                        "primary-container": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-accent-rgb), ${opacityValue})` : 'var(--dz-accent)',
+                        "on-secondary-container": "#4a4a4a",
+                        "on-primary": "#FAFAFA",
+                        "primary": "var(--dz-text)",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#4a4a4a",
+                        "on-background": "var(--dz-text)",
+                        "background": "var(--dz-bg)",
+                        "surface": "var(--dz-surface)",
+                        "on-tertiary-container": "#56657c",
+                        "inverse-primary": "#FAFAFA",
+                        "surface-container-highest": "#E5E5E5",
+                        "surface-container-high": "#EAEAEA",
+                        "on-surface-variant": "var(--dz-text-muted)",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface-container-low": "#F5F5F5",
+                        "on-tertiary": "#213145",
+                        "outline": "var(--dz-border-strong)",
+                        "surface-container": "var(--dz-surface-dim)",
+                        "secondary-container": "#E5E5E5",
+                        "accent-2": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-color-2-rgb), ${opacityValue})` : 'var(--dz-color-2)',
+                        "accent-3": ({ opacityValue }) => opacityValue != null ? `rgba(var(--dz-color-3-rgb), ${opacityValue})` : 'var(--dz-color-3)'
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "container-padding": "24px",
+                        "unit": "16px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Lora", "serif"],
+                        "body-lg": ["Work Sans", "sans-serif"],
+                        "headline-md": ["Lora", "serif"],
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Work Sans", "sans-serif"],
+                        "data-point": ["JetBrains Mono", "monospace"],
+                        "headline-lg": ["Lora", "serif"],
+                        "headline-lg-mobile": ["Lora", "serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "data-point": ["14px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --dz-accent: #D0342C; --dz-accent-rgb: 208, 52, 44;
+            --dz-color-1: #D0342C; --dz-color-1-rgb: 208, 52, 44;
+            --dz-color-2: #8A2A22; --dz-color-2-rgb: 138, 42, 34;
+            --dz-color-3: #3A1A18; --dz-color-3-rgb: 58, 26, 24;
+            --dz-bg: #FAFAFA;
+            --dz-surface: #FFFFFF; --dz-surface-rgb: 255, 255, 255; --dz-surface-border-rgb: 0, 0, 0;
+            --dz-surface-dim: #F0F0F0;
+            --dz-text: #1a1a1a; --dz-text-secondary: #6b6b6b; --dz-text-muted: #5a5a5a;
+            --dz-overlay-rgb: 0, 0, 0;
+            --dz-border-soft: #E5E5E5; --dz-border-strong: #D0D0D0;
+            --dz-track: #f3f4f6; --dz-track-text: #6b7280; --dz-idle: #D0D0D0;
+        }
+        .dark {
+            --dz-bg: #0A0A0A;
+            --dz-surface: #18181b; --dz-surface-rgb: 24, 24, 27; --dz-surface-border-rgb: 255, 255, 255;
+            --dz-surface-dim: #1f1f23;
+            --dz-text: #FAFAFA; --dz-text-secondary: #a1a1aa; --dz-text-muted: #8a8a8a;
+            --dz-overlay-rgb: 255, 255, 255;
+            --dz-border-soft: #27272a; --dz-border-strong: #3f3f46;
+            --dz-track: #27272a; --dz-track-text: #8a8a8a; --dz-idle: #52525b;
+        }
+        body {
+            background-color: var(--dz-bg);
+            color: var(--dz-text);
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(var(--dz-surface-rgb), 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(var(--dz-surface-border-rgb), 0.08);
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent 0%, rgba(var(--dz-accent-rgb), 0.1) 50%, transparent 100%);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: -100%;
+            left: 0;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(var(--dz-accent-rgb), 0.3);
+        }
+        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-work-sans { font-family: 'Work Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar-thumb { background: var(--dz-accent); }
+        ::-webkit-scrollbar-track { background: transparent; }
+    </style>
+    <script>!function(){try{'dark'===localStorage.getItem('dz-theme')&&document.documentElement.classList.add('dark')}catch(e){}}()</script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-fixed-dim/30 selection:text-white" data-mode="connect">
+
+    <!-- Side Navigation Rail -->
+    <nav class="fixed left-unit top-unit bottom-unit w-64 transition-all duration-300 rounded-lg glass-panel z-50 flex flex-col overflow-hidden group" style="transform: scale(1);">
+        <div class="p-6 mb-8 flex items-center gap-4 overflow-hidden whitespace-nowrap">
+            <img src="DozalDevs_Primary_Mono_Black.svg" alt="DozalDevs" class="h-10">
+        </div>
+        <div class="flex-1 flex flex-col gap-2 px-4">
+            <a class="flex items-center gap-4 p-4 rounded-lg text-primary-fixed-dim border-l-2 border-primary-fixed-dim bg-primary-fixed-dim/10 transition-all" href="dashboard.html">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span class="font-label-mono text-label-mono transition-opacity">DASHBOARD</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="employees.html">
+                <span class="material-symbols-outlined">bolt</span>
+                <span class="font-label-mono text-label-mono transition-opacity">EMPLOYEES</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-label-mono text-label-mono transition-opacity">INTEGRATIONS</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">sync</span>
+                <span class="font-label-mono text-label-mono transition-opacity">SYNC APPS</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">folder_open</span>
+                <span class="font-label-mono text-label-mono transition-opacity">ORGANIZATION</span>
+            </a>
+        </div>
+        <div class="mt-auto p-4 flex flex-col gap-2 border-t border-[rgba(var(--dz-overlay-rgb),0.05)]">
+            <a href="/" class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all group/home">
+                <span class="material-symbols-outlined transition-transform group-hover/home:-translate-x-0.5">home</span>
+                <span class="font-label-mono text-label-mono transition-opacity">Back to Home</span>
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-lg text-secondary hover:text-primary hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-all" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-mono text-label-mono transition-opacity">Settings</span>
+            </a>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-primary-fixed/30 bg-surface-container">
+                    <img onerror="this.style.display='none'" class="w-full h-full object-cover" data-alt="Operator avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmpGsHoqVBd5drfxhi5WTrhKJX0hneASKFLcpS1FSmnGFLq8JmlsvTfo_7PHWBu5Fn8AP9Torq26wbAjJf8wzWtYWOT5MnbKzOaDJCOzEd58LdvMh1x8e6FTj3kLDaLJ8UWZmDIlwcFhvPwRXuc_h8T7nNES7WicdvfI6ykZm7zuFQbeL29u9LJVm95PV51qe94oIozRKrD3GXNaFh8esNUIwkCCjpkukUKLxaPp0SWkzskWhkhGaSQNaSyAnyBPVCFG6AWbMzCLQ" alt="Operator">
+                </div>
+                <div class="flex flex-col transition-opacity">
+                    <span class="font-label-mono text-label-mono text-on-surface">USER NAME</span>
+                    <span class="font-label-mono text-[10px] text-primary-fixed">v4.0.2</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Controls -->
+    <div class="fixed top-unit left-1/2 -translate-x-1/2 z-50 flex items-center">
+        <button class="hidden sm:block px-6 py-2 bg-transparent border border-primary-fixed text-primary-fixed font-label-mono text-label-mono hover:bg-primary-fixed hover:text-background transition-all active:scale-95 glow-hover" id="create-task">Create New Employee</button>
+    </div>
+    <div class="fixed top-unit z-50 flex items-center" style="left:1780px;transform:translateX(-100%);">
+        <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded border border-[rgba(var(--dz-overlay-rgb),0.1)] hover:border-primary-fixed/50 transition-colors text-secondary hover:text-primary-fixed">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 pl-[280px] pr-unit min-h-screen pb-12 flex flex-col">
+        <div class="max-w-[1600px] mx-auto w-full flex-1 flex flex-col">
+            <!-- Thin Horizontal KPI Bar -->
+            <section class="flex flex-col md:flex-row flex-wrap md:flex-nowrap gap-4 mb-8">
+                <!-- KPI 1 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">psychology</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">HUMAN TIME SAVED</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">342.1</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">HOURS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_up</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">+18%</span>
+                    </div>
+                </div>
+                <!-- KPI 2 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">hub</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">ACTIVE EMPLOYEES</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">05/15</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">ONLINE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex gap-1">
+                        <div class="w-1.5 h-1.5 rounded-sm bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-accent-2 shadow-[0_0_8px_var(--dz-color-2)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-primary-fixed shadow-[0_0_8px_var(--dz-accent)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-accent-3 shadow-[0_0_8px_var(--dz-color-3)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-[rgba(var(--dz-overlay-rgb),0.1)]"></div>
+                        <div class="w-1.5 h-1.5 rounded-sm bg-[rgba(var(--dz-overlay-rgb),0.1)]"></div>
+                    </div>
+                </div>
+                <!-- KPI 3 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">blur_on</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">TOKEN USAGE</p>
+                            <span class="font-jetbrains text-xl text-primary leading-none">271,341</span>...
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_up</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">+8%</span>
+                    </div>
+                </div>
+                <!-- KPI 4 -->
+                <div class="glass-panel px-6 py-4 rounded-lg flex-1 flex items-center justify-between group transition-transform" style="transform: scale(1);">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary-fixed opacity-30 group-hover:opacity-100 transition-opacity">check_circle</span>
+                        <div>
+                            <p class="font-label-mono text-[10px] text-secondary mb-1">TASKS COMPLETED</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-jetbrains text-xl text-primary leading-none">1,248</span>
+                                <span class="text-primary-fixed-dim text-[10px] font-label-mono">TOTAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary-fixed text-sm">trending_up</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">+12%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Immersive Focus Layout -->
+            <div class="flex flex-col lg:flex-row gap-6 flex-1">
+                <!-- Large Hero Task Area -->
+                <section class="flex-1 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-display-lg text-headline-md tracking-widest text-primary border-l-4 border-primary-fixed pl-4">MAIN</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-4 flex-1 content-stretch">
+                        <!-- New Releases (big card spanning 2 cols x 2 rows) -->
+                        <div class="sm:col-span-2 lg:row-span-2 bg-surface rounded-xl p-6 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative overflow-hidden min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col h-full">
+                                <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                    <span class="text-primary-fixed tracking-widest text-xs opacity-90">NR // 01</span>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span class="px-2.5 py-0.5 bg-accent-2/10 text-accent-2 border border-accent-2/20 rounded-md text-[11px] tracking-wide">NEW RELEASES</span>
+                                        <span class="px-2.5 py-0.5 bg-surface text-secondary border border-outline-variant rounded-md text-[11px] tracking-wide" id="nr-date">JUL|26</span>
+                                    </div>
+                                </div>
+                                <h4 class="text-2xl font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 mb-2.5 tracking-tight">New Releases</h4>
+                                <p class="text-secondary leading-relaxed text-xs font-medium font-work-sans mb-5 max-w-md">Latest updates and improvements to the platform — new employees, integrations, and capabilities rolling out this cycle.</p>
+
+                                <div class="flex-1 flex flex-col gap-3 overflow-y-auto pr-1" id="nr-feed">
+                                    <!-- Release Row 1 -->
+                                    <div class="flex gap-3 p-3 rounded-lg border border-surface-variant hover:border-primary-fixed/30 transition-colors bg-surface-container/40">
+                                        <div class="w-9 h-9 rounded-md bg-primary-fixed/10 text-primary-fixed flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-base">bolt</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-center gap-2">
+                                                <h5 class="text-sm font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Employee SDK v1.2</h5>
+                                                <span class="font-jetbrains text-[10px] text-on-surface-variant flex-shrink-0">JUL 22</span>
+                                            </div>
+                                            <p class="text-xs text-secondary mt-0.5 leading-snug">Faster employee boot times, new tool registration API, and improved instruction parsing.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Release Row 2 -->
+                                    <div class="flex gap-3 p-3 rounded-lg border border-surface-variant hover:border-primary-fixed/30 transition-colors bg-surface-container/40">
+                                        <div class="w-9 h-9 rounded-md bg-primary-fixed/10 text-primary-fixed flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-base">hub</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-center gap-2">
+                                                <h5 class="text-sm font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Integrations Expansion</h5>
+                                                <span class="font-jetbrains text-[10px] text-on-surface-variant flex-shrink-0">JUL 18</span>
+                                            </div>
+                                            <p class="text-xs text-secondary mt-0.5 leading-snug">Slack, Notion, and Google Sheets connectors now generally available for all employees.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Release Row 3 -->
+                                    <div class="flex gap-3 p-3 rounded-lg border border-surface-variant hover:border-primary-fixed/30 transition-colors bg-surface-container/40">
+                                        <div class="w-9 h-9 rounded-md bg-primary-fixed/10 text-primary-fixed flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-base">tune</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-center gap-2">
+                                                <h5 class="text-sm font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Guardrails Overhaul</h5>
+                                                <span class="font-jetbrains text-[10px] text-on-surface-variant flex-shrink-0">JUL 09</span>
+                                            </div>
+                                            <p class="text-xs text-secondary mt-0.5 leading-snug">Granular permission scopes, audit log streaming, and a refined escalation workflow.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Release Row 4 -->
+                                    <div class="flex gap-3 p-3 rounded-lg border border-surface-variant hover:border-primary-fixed/30 transition-colors bg-surface-container/40">
+                                        <div class="w-9 h-9 rounded-md bg-primary-fixed/10 text-primary-fixed flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-base">speed</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-center gap-2">
+                                                <h5 class="text-sm font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Token Usage Insights</h5>
+                                                <span class="font-jetbrains text-[10px] text-on-surface-variant flex-shrink-0">JUL 01</span>
+                                            </div>
+                                            <p class="text-xs text-secondary mt-0.5 leading-snug">Per-employee token breakdowns and daily caps on the dashboard.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-5 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-jetbrains text-[10px] text-on-surface-variant">4 RELEASES THIS MONTH</span>
+                                    <button class="flex items-center justify-center gap-2 bg-surface text-primary-fixed border border-primary-fixed/40 px-4 py-2 rounded-lg text-xs transition-all duration-200 shadow-sm group-hover:bg-primary-fixed group-hover:text-white active:scale-95 font-work-sans">
+                                        <span>View all</span>
+                                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decor Card 03 — System Pulse / Activity Sparkline -->
+                        <div class="bg-surface rounded-xl p-5 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative overflow-hidden min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                    <span class="text-on-surface-variant tracking-widest text-xs">SYS // 03</span>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors text-base">monitoring</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-mono text-[10px] text-secondary mb-2">PLATFORM ACTIVITY</p>
+                                    <h4 class="text-lg font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight mb-3">System Pulse</h4>
+                                    <div class="flex items-end gap-1 h-12 w-full overflow-hidden">
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/30 h-[40%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/40 h-[65%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/50 h-[30%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/60 h-[80%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/70 h-[55%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/80 h-[95%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/90 h-[70%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed h-[45%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/60 h-[60%] transition-all"></div>
+                                        <div class="w-2 bg-[rgba(var(--dz-overlay-rgb),0.12)] group-hover:bg-primary-fixed/70 h-[85%] transition-all"></div>
+                                    </div>
+                                </div>
+                                <hr class="my-4 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-jetbrains text-[10px] text-on-surface-variant">UPTIME 99.98%</span>
+                                    <span class="font-jetbrains text-[10px] text-primary-fixed">LIVE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decor Card 06 — Quick Stats Gauge -->
+                        <div class="bg-surface rounded-xl p-5 transition-all duration-300 ease-out border border-surface-variant shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary-fixed/40 group cursor-default font-work-sans flex flex-col justify-between relative overflow-hidden min-h-[190px]" style="transform: scale(1);">
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div class="flex justify-between items-center mb-4 font-jetbrains">
+                                    <span class="text-on-surface-variant tracking-widest text-xs">SYS // 06</span>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors text-base">gauge</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-mono text-[10px] text-secondary mb-2">QUOTA UTILIZATION</p>
+                                    <h4 class="text-lg font-lora italic text-on-surface group-hover:text-primary-fixed transition-colors duration-300 tracking-tight mb-3">Resources</h4>
+                                    <div class="flex items-end gap-2 mb-3">
+                                        <span class="font-jetbrains text-3xl text-on-surface group-hover:text-primary-fixed transition-colors leading-none">68</span>
+                                        <span class="font-jetbrains text-xs text-on-surface-variant">% used</span>
+                                    </div>
+                                    <div class="h-1.5 bg-[var(--dz-track)] rounded-full overflow-hidden">
+                                        <div class="h-full bg-[var(--dz-idle)] group-hover:bg-primary-fixed group-hover:shadow-[0_0_10px_rgba(var(--dz-accent-rgb),0.5)] transition-all" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                                <hr class="my-4 border-surface-variant transition-colors duration-300 group-hover:border-primary-fixed/20">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-jetbrains text-[10px] text-on-surface-variant">RESET IN 14D</span>
+                                    <span class="material-symbols-outlined text-primary-fixed text-base">autorenew</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Secondary Sidebar -->
+                <aside class="w-full lg:w-96 flex flex-col gap-4">
+                    <div class="flex items-center justify-between mb-2 md:mb-4 h-8">
+                        <h3 class="font-display-lg text-sm tracking-widest text-secondary">| PORTAL</h3>
+                        <div class="flex gap-2">
+                            <button class="font-label-mono text-[10px] text-primary-fixed border border-primary-fixed/20 px-2 py-1 hover:bg-[rgba(var(--dz-overlay-rgb),0.05)] transition-colors rounded">NOTIFICATIONS</button>
+                            <button class="font-label-mono text-[10px] text-secondary hover:text-primary transition-colors px-2 py-1">ON/OFF</button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 overflow-y-auto pr-2 pb-4 h-full">
+                        <!-- Small Task Card 2 (Firewall Breach) -->
+                        <div class="glass-panel p-5 rounded-xl border-l-2 border-outline-variant hover:border-primary-fixed transition-all group flex flex-col justify-between cursor-pointer" style="transform: scale(1);">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="px-2 py-0.5 bg-[var(--dz-track)] text-secondary group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed font-label-mono text-[10px] rounded border border-outline-variant group-hover:border-primary-fixed/30 inline-block transition-colors">ROCKY</span>
+                                    <span class="material-symbols-outlined text-primary-fixed animate-pulse text-sm">priority_high</span>
+                                </div>
+                                <h4 class="font-work-sans text-lg text-on-surface group-hover:text-primary-fixed transition-colors">MISSING INSTRUCTIONS TO PROCEED</h4>
+                            </div>
+                        </div>
+
+                        <!-- Medium Task Card (Deep Space Sync) -->
+                        <div class="glass-panel p-5 rounded-xl border-l-2 border-outline-variant hover:border-primary-fixed transition-all group cursor-pointer" style="transform: scale(1);">
+                            <div class="mb-4">
+                                <span class="px-2 py-0.5 bg-[var(--dz-track)] text-secondary group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed font-label-mono text-[10px] rounded border border-outline-variant group-hover:border-primary-fixed/30 mb-3 inline-block transition-colors">DUKE</span>
+                                <h4 class="font-work-sans text-lg text-on-surface group-hover:text-primary-fixed transition-colors">CUSTOMER_APPOINTMENTS</h4>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-[10px] font-label-mono text-secondary">
+                                    <span>BOOKING CAPACITY</span>
+                                    <span>78%</span>
+                                </div>
+                                <div class="h-1 bg-[rgba(var(--dz-overlay-rgb),0.05)] rounded-full overflow-hidden">
+                                    <div class="h-full bg-[rgba(var(--dz-overlay-rgb),0.2)] group-hover:bg-primary-fixed group-hover:shadow-[0_0_10px_rgba(var(--dz-accent-rgb),0.5)] transition-all" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Small Task Card 1 (Audit Node_7 logs) -->
+                        <div class="glass-panel p-5 rounded-xl border-l-2 border-outline-variant hover:border-primary-fixed transition-all group flex flex-col justify-between cursor-pointer" style="transform: scale(1);">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="px-2 py-0.5 bg-[var(--dz-track)] text-secondary group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed font-label-mono text-[10px] rounded border border-outline-variant group-hover:border-primary-fixed/30 inline-block transition-colors">ROBO</span>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors text-sm">more_vert</span>
+                                </div>
+                                <h4 class="font-work-sans text-lg text-on-surface mb-2 group-hover:text-primary-fixed transition-colors">CHANGE DOOR LOCK PASSWORDS</h4>
+                                <p class="font-body-md text-xs text-secondary line-clamp-2">After guest check-out change door lock codes and notify me via WhatsApp.</p>
+                            </div>
+                            <div class="flex items-center gap-2 mt-4">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[rgba(var(--dz-overlay-rgb),0.2)] group-hover:bg-primary-fixed group-hover:shadow-[0_0_8px_var(--dz-accent)] transition-all"></div>
+                                <span class="font-label-mono text-[10px] text-secondary group-hover:text-on-surface transition-colors">Apps: AirBnB, WhatsApp, DozalDevs</span>
+                            </div>
+                        </div>
+
+                        <!-- Horizontal Task Row (Vacuum DB) -->
+                        <div class="glass-panel p-4 rounded-xl border-l-2 border-outline-variant hover:border-primary-fixed transition-all group flex items-center justify-between cursor-pointer" style="transform: scale(1);">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded bg-[var(--dz-track)] flex items-center justify-center text-on-surface-variant group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed transition-all">
+                                    <span class="material-symbols-outlined text-sm">database</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-work-sans text-sm text-on-surface group-hover:text-primary-fixed transition-colors">Idle</h4>
+                                    <span class="font-label-mono text-[10px] text-secondary group-hover:text-primary-fixed transition-colors">5 Employees are waiting instructions...</span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 rounded-full border border-[rgba(var(--dz-overlay-rgb),0.1)] flex items-center justify-center">
+                                <span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Decorative Data Visualization Layer -->
+            <section class="mt-8 h-24 relative glass-panel rounded-xl overflow-hidden group hidden sm:block" style="transform: scale(1);">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="h-full w-full bg-[linear-gradient(90deg,rgba(var(--dz-accent-rgb),0.1)_1px,transparent_1px),linear-gradient(rgba(var(--dz-accent-rgb),0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                </div>
+                <div class="absolute inset-0 p-4 flex flex-col justify-end">
+                    <div class="flex items-end gap-1 h-10 w-full overflow-hidden opacity-50">
+                        <div class="w-3 bg-primary-fixed-dim/20 h-[30%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[60%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/30 h-[45%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/50 h-[80%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/60 h-[100%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[55%]"></div>
+                        <div class="w-3 bg-accent-2/20 h-[25%]"></div>
+                        <div class="w-3 bg-accent-3/30 h-[40%]"></div>
+                        <div class="w-3 bg-accent-2/50 h-[70%]"></div>
+                        <div class="w-3 bg-accent-3/70 h-[95%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[60%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/30 h-[45%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/50 h-[80%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/60 h-[100%]"></div>
+                        <div class="w-3 bg-primary-fixed-dim/40 h-[55%]"></div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2 relative z-10">
+                        <span class="font-label-mono text-[10px] text-secondary">NETWORK_LATENCY_STREAM</span>
+                        <span class="font-label-mono text-[10px] text-primary-fixed">MS: 14.2</span>
+                    </div>
+                </div>
+                <div class="scan-line opacity-5"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Interactive FAB (Mobile/Alternate) -->
+    <button id="create-task-mobile" class="fixed bottom-6 right-6 w-14 h-14 bg-primary-fixed text-background rounded-full shadow-[0_0_20px_rgba(var(--dz-accent-rgb),0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 sm:hidden">
+        <span class="material-symbols-outlined text-3xl">add</span>
+    </button>
+
+    <script>
+        // Simple micro-interactions
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                if(window.innerWidth > 768) {
+                    card.style.transform = 'scale(0.99)';
+                }
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Custom Notification System (Replaces Alert)
+        const showNotification = (message) => {
+            const modal = document.getElementById('system-modal');
+            if (!modal) return;
+            const text = document.getElementById('system-modal-text');
+            if (text) text.textContent = message;
+
+            // Show
+            modal.classList.remove('translate-x-[150%]', 'opacity-0');
+
+            // Hide after 3.5 seconds
+            setTimeout(() => {
+                modal.classList.add('translate-x-[150%]', 'opacity-0');
+            }, 3500);
+        };
+
+        // Create task prompt simulation
+        const handleCreateTask = () => {
+            const id = Math.floor(Math.random() * 9000) + 1000;
+            console.log(`Initiating Neural Task Instance #${id}`);
+            showNotification(`NEURAL_TASK: Initiating instance node #${id}...`);
+        };
+
+        const createBtn = document.getElementById('create-task');
+        if(createBtn) createBtn.addEventListener('click', handleCreateTask);
+
+        const createBtnMobile = document.getElementById('create-task-mobile');
+        if(createBtnMobile) createBtnMobile.addEventListener('click', handleCreateTask);
+
+        // Stepper Animation (Card 6)
+        let stepperProgress = 0;
+        let stepperStatus = 'idle';
+        let stepperFrameId = null;
+        let stepperStartTime = null;
+        const stepperDuration = 60000;
+
+        const getFill = (p, start, end) => {
+            if (p <= start) return 0;
+            if (p >= end) return 100;
+            return ((p - start) / (end - start)) * 100;
+        };
+
+        function renderStepper() {
+            const nodes = document.querySelectorAll('#stepper-card-6 .stepper-node');
+            const lines = document.querySelectorAll('#stepper-card-6 .stepper-line-fill');
+            nodes.forEach((node, index) => {
+                const nodeStart = index * 30;
+                const nodeEnd = nodeStart + 10;
+                const nodeFill = getFill(stepperProgress, nodeStart, nodeEnd);
+                node.style.background = `linear-gradient(to right, var(--dz-accent) ${nodeFill}%, var(--dz-track) ${nodeFill}%)`;
+                node.style.color = nodeFill > 50 ? 'white' : 'var(--dz-track-text)';
+                if (nodeFill === 100) {
+                    node.innerHTML = '<svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>';
+                } else {
+                    node.innerHTML = `<span class="relative z-10">${index + 1}</span>`;
+                }
+            });
+            lines.forEach((line, index) => {
+                const lineStart = index * 30 + 10;
+                const lineEnd = lineStart + 20;
+                const lineFill = getFill(stepperProgress, lineStart, lineEnd);
+                line.style.width = `${lineFill}%`;
+            });
+
+            let statusText = 'System ready';
+            if (stepperStatus === 'running') {
+                if (stepperProgress < 10) statusText = 'Initializing...';
+                else if (stepperProgress < 30) statusText = 'Interpreting Instructions...';
+                else if (stepperProgress < 40) statusText = 'Communicating with server...';
+                else if (stepperProgress < 60) statusText = 'Testing capabilities...';
+                else if (stepperProgress < 70) statusText = 'Submitting...';
+                else if (stepperProgress < 90) statusText = 'Delivering...';
+                else if (stepperProgress < 100) statusText = 'Finalizing configuration...';
+            } else if (stepperStatus === 'completed') {
+                statusText = 'Task completed successfully!';
+            }
+
+            const statusEl = document.getElementById('stepper-status-text');
+            const progressEl = document.getElementById('stepper-progress-text');
+            if (statusEl) statusEl.textContent = statusText;
+            if (progressEl) {
+                if (stepperStatus === 'running') progressEl.textContent = `${Math.floor(stepperProgress)}% processing`;
+                else if (stepperStatus === 'completed') progressEl.textContent = '100% processing';
+                else progressEl.textContent = 'Awaiting start command';
+            }
+
+            const stepperCard = document.getElementById('stepper-card-6');
+            if (stepperCard) stepperCard.style.cursor = stepperStatus === 'completed' ? 'pointer' : 'default';
+        }
+
+        function stepperAnimate(timestamp) {
+            if (!stepperStartTime) stepperStartTime = timestamp;
+            const elapsed = timestamp - stepperStartTime;
+            stepperProgress = Math.min((elapsed / stepperDuration) * 100, 100);
+            renderStepper();
+            if (stepperProgress < 100) {
+                stepperFrameId = requestAnimationFrame(stepperAnimate);
+            } else {
+                stepperStatus = 'completed';
+                renderStepper();
+            }
+        }
+
+        function stepperStart() {
+            stepperProgress = 0;
+            stepperStatus = 'running';
+            stepperStartTime = null;
+            if (stepperFrameId) cancelAnimationFrame(stepperFrameId);
+            renderStepper();
+            stepperFrameId = requestAnimationFrame(stepperAnimate);
+        }
+
+        function stepperCancel() {
+            stepperStatus = 'idle';
+            stepperProgress = 0;
+            stepperStartTime = null;
+            if (stepperFrameId) cancelAnimationFrame(stepperFrameId);
+            renderStepper();
+        }
+
+        const stepperCardEl = document.getElementById('stepper-card-6');
+        if (stepperCardEl) {
+            stepperCardEl.addEventListener('click', function() {
+                stepperStart();
+            });
+            stepperStart();
+        }
+    </script>
+
+    <!-- Color Lab: live palette / harmony play-box -->
+    <script src="color-lab.js" defer></script>
+</body>
+</html>

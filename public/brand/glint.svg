@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <title>DozalDevs Glint — Ember</title>
+  <desc>Four-point sparkle — canonical DozalDevs brand ornament, Ember variant (for light grounds).</desc>
+  <path fill="#C47A3D" d="M50 0 C50 39, 39 50, 0 50 C39 50, 50 61, 50 100 C50 61, 61 50, 100 50 C61 50, 50 39, 50 0 Z"/>
+</svg>
