@@ -350,7 +350,7 @@ export default function IntroAnimation() {
                         You think, it executes. <br className="hidden md:block" />
                     </h2>
                     <p className="text-sm md:text-base text-gray-600 max-w-lg leading-relaxed" style={{ fontFamily: "var(--font-work-sans)" }}>
-                        <br/> Configure and watch it execute complex <br/> workflows across your apps in minutes. <br className="hidden md:block" />
+                        <br/> Configure and watch it execute complex <br/> workflows across 1K+ apps in minutes. <br className="hidden md:block" />
                         
                     </p>
                 </motion.div>

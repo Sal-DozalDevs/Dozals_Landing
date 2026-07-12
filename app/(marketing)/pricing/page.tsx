@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Pricing — Dozals",
   description:
-    "Simple pricing that starts at a $25/mo founding rate, locked in for early partners. Starter, Pro, and Team plans — every path ends in a live demo.",
+    "Simple pricing that starts at a $10/mo founding rate, locked in for early partners. Starter, Pro, and Team plans — every path ends in a live demo.",
 };
 
 export default function PricingPage() {
@@ -14,7 +14,7 @@ export default function PricingPage() {
           <span className="rule"></span> Pricing
         </div>
         <h1 className="page-hero__title reveal">
-          Start at <em>$25</em>. Lock it in.
+          Start at <em>$10</em>. Lock it in.
         </h1>
         <p className="page-hero__deck reveal">
           We&apos;re early, and we&apos;d rather build a base of partners than a big price tag. Early
@@ -27,16 +27,15 @@ export default function PricingPage() {
           <div className="plan reveal">
             <span className="plan__badge ember">Founding rate</span>
             <div className="plan__name">Starter</div>
-            <div className="plan__tag">One Dozal for the loop that eats your week.</div>
+            <div className="plan__tag">1 organization, up to 20 dozals.</div>
             <div className="plan__price">
-              <span className="amt">$25</span>
+              <span className="amt">$10</span>
               <span className="per">/ month</span>
             </div>
             <div className="plan__note">Locked in for early partners</div>
             <ul className="plan__list">
-              <li>One Dozal, one core workflow</li>
+              <li>1 organization, up to 20 dozals</li>
               <li>Connect the apps you already use</li>
-              <li>Shadow-mode onboarding</li>
               <li>One-tap approvals</li>
               <li>Full audit log &amp; replay</li>
               <li>Email support</li>
@@ -58,12 +57,12 @@ export default function PricingPage() {
             </div>
             <div className="plan__note">Everything in Starter, plus —</div>
             <ul className="plan__list">
-              <li>Up to five workflows</li>
-              <li>Higher action limits</li>
+              <li>3 Organizations, 30 dozals per Org</li>
+              <li>Shadow-mode onboarding</li>
               <li>Multi-app, end-to-end execution</li>
               <li>Advanced guardrails &amp; spending limits</li>
               <li>Priority support</li>
-              <li>Onboarding call with our team</li>
+              <li>Call with our team</li>
             </ul>
             <div className="plan__cta">
               <Link className="btn btn--primary btn--block" href="/demo">
@@ -130,7 +129,7 @@ export default function PricingPage() {
               </details>
               <details>
                 <summary>
-                  Why is it only $25 to start? <span className="pm">+</span>
+                   Why is it only $10 to start? <span className="pm">+</span>
                 </summary>
                 <p>
                   We&apos;re early and would rather build a base of design partners than maximize revenue
@@ -184,7 +183,7 @@ export default function PricingPage() {
           Lock in the <em>founding rate</em>.
         </h2>
         <p className="sub reveal">
-          Book a demo, bring one workflow, and if it&apos;s a fit you start at $25/mo — held for the life
+          Book a demo, bring one workflow, and if it&apos;s a fit you start at $10/mo — held for the life
           of the account.
         </p>
         <div className="row reveal">

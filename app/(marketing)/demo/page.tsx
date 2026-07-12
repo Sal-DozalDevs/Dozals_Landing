@@ -3,7 +3,7 @@ import DemoForm from "@/components/site/demo-form";
 export const metadata = {
   title: "Book a demo — Dozals",
   description:
-    "Bring one workflow you'd love to never touch again. We'll connect it, run shadow mode, and show a Dozal doing it end to end. Founding rate from $25/mo.",
+    "Bring one workflow you'd love to never touch again. We'll connect it, run shadow mode, and show a Dozal doing it end to end. Founding rate from $10/mo.",
 };
 
 export default function DemoPage() {
@@ -46,7 +46,7 @@ export default function DemoPage() {
                 <div>
                   <h4>Fit &amp; founding rate — 5 min</h4>
                   <p>
-                    If it&apos;s a fit, you start at the $25/mo founding rate, locked in. Month-to-month,
+                    If it&apos;s a fit, you start at the $10/mo founding rate, locked in. Month-to-month,
                     cancel anytime.
                   </p>
                 </div>
@@ -55,7 +55,7 @@ export default function DemoPage() {
 
             <div className="hero__trust reveal" style={{ marginTop: 36 }}>
               <span className="glint" style={{ "--gw": "11px" } as React.CSSProperties}></span> Live instantly
-              <span className="dot"></span> From $25/mo
+              <span className="dot"></span> From $10/mo
               <span className="dot"></span> You stay in control
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function DemoPage() {
           </div>
           <div className="card reveal">
             <div className="card__index">FOUNDING RATE</div>
-            <div className="card__title">$25/mo, locked in.</div>
+            <div className="card__title">$10/mo, locked in.</div>
             <p className="card__body">
               Early partners keep the founding rate for the life of the account, even after list prices
               rise. Month-to-month.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Port of the original main.js reveal behavior:
@@ -9,6 +10,7 @@ import { useEffect } from "react";
  * Re-runs when `route` changes (Next navigations).
  */
 export default function RevealOnScroll() {
+  const pathname = usePathname();
   useEffect(() => {
     const groups = document.querySelectorAll<HTMLElement>(
       ".grid-2, .grid-3, .grid-4, .steps, .plans, .hero__left, .stagger"
@@ -36,8 +38,19 @@ export default function RevealOnScroll() {
       { threshold: 0.12, rootMargin: "0px 0px 10% 0px" }
     );
     reveals.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+
+    // Fallback: force-reveal any elements the observer missed after 2.5s
+    const fallback = setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.in)").forEach((el) => {
+        el.classList.add("in");
+      });
+    }, 2500);
+
+    return () => {
+      io.disconnect();
+      clearTimeout(fallback);
+    };
+  }, [pathname]);
 
   return null;
 }

@@ -321,7 +321,7 @@ export default function Home() {
             <span className="glint"></span> Live instantly
           </span>
           <span className="item">
-            <span className="glint"></span> From $25/mo
+            <span className="glint"></span> From $10/mo
           </span>
           <span className="item">
             <span className="glint"></span> Cancel anytime
