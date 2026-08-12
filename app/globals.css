@@ -1,24 +1,12 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+@import "./tokens.css";
 @import "./site.css";
 
+/* Map Tailwind's theme onto the DozalDevs brand tokens so any utility
+   classes used elsewhere in the app pick up brand values. */
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-background: #FAFAFA;
-  --color-foreground: #0B0A08;
-  --color-primary: #0B0A08;
-}
-
-:root {
-  --background: #FAFAFA;
-  --foreground: #0B0A08;
-}
-
-/* Point the ported Dozals design-system tokens at the next/font families
-   so every existing class in site.css picks up the locally-hosted fonts. */
-:root {
-  --sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', monospace;
-  --serif: var(--font-lora), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--body-face);
+  --font-mono: var(--mono-face);
+  --color-background: #fffbf5;
+  --color-foreground: #15110d;
 }

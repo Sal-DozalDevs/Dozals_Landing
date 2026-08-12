@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { Check } from "@/components/site/icons";
 
 export const metadata = {
-  title: "Use cases — Dozals",
+  title: "Use cases — DozalDevs",
   description:
     "Same Dozal, different desk. See how a Dozal executes real work for fractional CFOs, agency owners, solo practitioners, ops leads, consultants and studio leads.",
 };
@@ -79,78 +80,75 @@ export default function UseCasesPage() {
   return (
     <>
       <header className="page-hero wrap" id="page-hero" data-section="Use Cases Hero">
-        <div className="eyebrow reveal">
-          <span className="rule"></span> Use cases
-        </div>
-        <h1 className="page-hero__title reveal">
-          Same Dozal. <em>Different desk.</em>
-        </h1>
-        <p className="page-hero__deck reveal">
+        <span className="eyebrow">Use cases</span>
+        <h1>Same Dozal. Different desk.</h1>
+        <p className="deck">
           A Dozal doesn&apos;t come pre-loaded with one industry&apos;s playbook. It comes pre-loaded
-          with <em>your</em> playbook — learned in shadow mode from the way you already work. Here are a
-          few of the desks it sits behind.
+          with <em>your</em> playbook — learned in shadow mode from the way you already work. Here are
+          a few of the desks it sits behind.
         </p>
       </header>
 
-      <section className="section wrap" id="gallery" data-section="Gallery">
-        <div className="grid-3 stagger">
-          {USE_CASES.map((uc) => (
-            <div className="uc reveal" key={uc.role}>
-              <div className="uc__role">{uc.role}</div>
-              <div className="uc__ctx">{uc.ctx}</div>
-              <ul className="uc__list">
-                {uc.list.map((li) => (
-                  <li key={li}>{li}</li>
-                ))}
-              </ul>
-              <div className="uc__stack">
-                {uc.stack.map((s) => (
-                  <span className="chip" key={s}>
-                    {s}
-                  </span>
-                ))}
+      <section className="section" id="gallery" data-section="Gallery">
+        <div className="wrap">
+          <div className="grid-3">
+            {USE_CASES.map((uc) => (
+              <div className="uc" key={uc.role}>
+                <h3>{uc.role}</h3>
+                <p className="ctx">{uc.ctx}</p>
+                <ul className="check-list">
+                  {uc.list.map((li) => (
+                    <li key={li}>
+                      <Check />
+                      <span>{li}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="apps">
+                  {uc.stack.map((s) => (
+                    <span className="chip-app" key={s}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="divider">
-        <span className="bar left"></span>
-        <span className="glint"></span>
-        <span className="bar right"></span>
-      </div>
-
-      <section className="section--tight wrap" id="the-point" data-section="The Point">
-        <div className="frame-light reveal">
-          <p className="manifesto">
-            Different titles, <span className="em">one shared problem:</span> the software tells them
-            what to do, and then they still have to do it. A Dozal is the desk that does it.
+      <section className="section band" id="the-point" data-section="The Point">
+        <div className="wrap stack">
+          <h2>
+            Different titles, <span className="word">one shared problem.</span>
+          </h2>
+          <p>
+            The software tells them what to do, and then they still have to do it. A Dozal is the desk
+            that does it.
           </p>
-          <p className="reveal" style={{ marginTop: 26 }}>
-            <Link className="textlink" href="/demo">
+          <p style={{ marginTop: 26 }}>
+            <Link className="textlink" href="/#start">
               Don&apos;t see your desk? Tell us what you&apos;d hand off →
             </Link>
           </p>
         </div>
       </section>
 
-      <section className="section ctaband wrap" id="cta" data-section="CTA">
-        <span className="glint xl tw reveal"></span>
-        <h2 className="reveal">
-          Bring the task you <em>dread</em> most.
-        </h2>
-        <p className="sub reveal">
-          Whatever desk you sit at, there&apos;s a repetitive loop eating your week. Point a Dozal at it
-          and watch it close.
-        </p>
-        <div className="row reveal">
-          <Link className="btn btn--primary" href="/demo">
-            Book a demo <span className="glint"></span>
-          </Link>
-          <Link className="btn btn--ghost" href="/pricing">
-            See pricing
-          </Link>
+      <section className="section close" id="cta" data-section="CTA">
+        <div className="wrap">
+          <h2>Bring the task you dread most.</h2>
+          <p className="lede">
+            Whatever desk you sit at, there&apos;s a repetitive loop eating your week. Point a Dozal
+            at it and watch it close.
+          </p>
+          <div className="row">
+            <Link className="btn btn-cta" href="/#start">
+              Get started
+            </Link>
+            <Link className="btn btn-ghost" href="/pricing">
+              See pricing
+            </Link>
+          </div>
         </div>
       </section>
     </>

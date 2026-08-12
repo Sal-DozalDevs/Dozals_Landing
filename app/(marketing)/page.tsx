@@ -1,333 +1,317 @@
-import Link from "next/link";
-import HeroTransition from "@/components/site/hero-transition";
+"use client";
+
+import { useEffect } from "react";
+import Image from "next/image";
+import { useLang } from "@/components/site/lang";
+import SignupCard from "@/components/site/signup-card";
+import StickyCta from "@/components/site/sticky-cta";
+
+const CREW = [
+  {
+    src: "/characters/dozal-coral.png",
+    name: "Dozal",
+    w: 437,
+    h: 561,
+    role: { en: "Takes your brief", es: "Recibe tu encargo" },
+  },
+  {
+    src: "/characters/lindy-blue.png",
+    name: "Lindy",
+    w: 445,
+    h: 566,
+    role: { en: "Guest replies", es: "Respuestas a huéspedes" },
+  },
+  {
+    src: "/characters/gumloop-green.png",
+    name: "Gumloop",
+    w: 547,
+    h: 592,
+    role: { en: "Inbox cleanup", es: "Limpieza del buzón" },
+  },
+  {
+    src: "/characters/vellum-amber.png",
+    name: "Vellum",
+    w: 510,
+    h: 555,
+    role: { en: "Refunds & records", es: "Reembolsos y registro" },
+  },
+  {
+    src: "/characters/panel7-violet.png",
+    name: "Panel 7",
+    w: 530,
+    h: 564,
+    role: { en: "Dev help", es: "Ayuda para dev" },
+  },
+];
 
 export default function Home() {
+  const { lang, t } = useLang();
+
+  useEffect(() => {
+    document.title =
+      lang === "es"
+        ? "DozalDevs — El trabajo en la computadora, fuera de tu escritorio."
+        : "DozalDevs — The computer work, off your desk.";
+  }, [lang]);
+
   return (
     <>
-      {/* ═══ HERO (scroll-morph) → DASHBOARD crossfade ═══ */}
-      <HeroTransition>
-        <div className="divider">
-          <span className="bar left"></span>
-          <span className="glint"></span>
-          <span className="bar right"></span>
-        </div>
-
-        {/* ═══ DASHBOARD PREVIEW ═══ */}
-        <section className="section wrap" id="dashboard" data-section="Dashboard Preview">
-          <div className="shead reveal">
-            <div className="shead__index">
-              § 01<span>The console</span>
-            </div>
-            <div>
-              <h2 className="shead__title">
-                See the work <em>actually getting done.</em>
-              </h2>
-              <p className="shead__lede">
-                Every app it touched, every action it took, queued for your one-tap sign-off. Your
-                Dozal&apos;s console is a replayable ledger — never a new tab to babysit.
-              </p>
-            </div>
-          </div>
-
-          <img
-            src="/assets/Dashboard%20Mock.png"
-            alt="Dozals console dashboard"
-            className="console reveal"
-            data-label="Console (Dashboard mock)" data-file="app/page.tsx:37"
-            style={{ marginTop: 56, width: "100%", height: "auto", display: "block", border: "1px solid var(--border-strong)", borderRadius: 10, boxShadow: "var(--shadow-frame)" }}
-          />
-
-          <p className="reveal" style={{ marginTop: 36 }}>
-            <a className="textlink" href="/Dashboard/dashboard.html" target="_blank" rel="noopener noreferrer">
-              Explore the full console →
-            </a>
-          </p>
-        </section>
-      </HeroTransition>
-
-      {/* ═══ CASE STUDY ═══ */}
-      <section className="section wrap" id="case-study" data-section="Case Study">
-        <div className="shead reveal">
-          <div className="shead__index">
-            § 02<span>The proof</span>
-          </div>
+      {/* ============ hero (the 5-second test) ============ */}
+      <section className="hero" id="hero" data-section="Hero">
+        <div className="wrap grid">
           <div>
-            <h2 className="shead__title">
-              10× productivity gain. 1,972 tasks completed <em>in 6 weeks.</em>
-            </h2>
-            <p className="shead__lede">
-              In just 6 weeks, our platform completed 1,972 tasks, saved 340+ hours of manual
-              labor, and proved that the future of work doesn&apos;t require a hiring process.
+            <span className="eyebrow">
+              {t({
+                en: "DozalDevs — done-for-you operations",
+                es: "DozalDevs — operaciones resueltas",
+              })}
+            </span>
+            <h1 style={{ marginTop: 14 }}>
+              {t({
+                en: "The computer work, off your desk.",
+                es: "El trabajo en la computadora, fuera de tu escritorio.",
+              })}
+            </h1>
+            <p className="lede">
+              {t({
+                en: "DozalDevs takes the multi-step computer work off your desk and hands it back finished. You describe the job in plain words and see everything it did.",
+                es: "DozalDevs se lleva el trabajo de varios pasos de tu escritorio y te lo devuelve hecho. Describes el trabajo en palabras simples y ves todo lo que hizo.",
+              })}
             </p>
-          </div>
-        </div>
-
-        {/* Hero band */}
-        <div className="cs-hero reveal" data-label="Case Study · Hero ROI" data-file="app/page.tsx">
-          <div className="cs-hero__roi">
-            <span className="x">10</span>
-            <em>×</em>
-          </div>
-          <div>
-            <p className="cs-hero__lead">
-              We improved a whole <em>department&apos;s productivity by 10×</em> —
-              and completed <em>1,972 tasks</em> with our Dozals.
-            </p>
-            <div className="cs-hero__chips">
-              <span className="chip-m">1,972 TASKS</span>
-              <span className="chip-m">340+ HOURS SAVED</span>
-              <span className="chip-m">6-WEEK WINDOW</span>
-              <span className="chip-m">24/7/365</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Speed advantage */}
-        <div className="reveal" style={{ marginTop: 40 }}>
-          <div className="cs-versus" data-label="Case Study · Speed" data-file="app/page.tsx">
-            <div>
-              <div className="cs-versus__tag">Human baseline</div>
-              <div className="cs-versus__num">
-                30–90<span style={{ fontSize: "0.4em", color: "var(--text-3)" }}> min</span>
-              </div>
-              <p className="cs-versus__sub">Per task — with context-switching, breaks, and weekends lost to the queue.</p>
-            </div>
-            <div>
-              <div className="cs-versus__tag">AI completion</div>
-              <div className="cs-versus__num ember">
-                240<span style={{ fontSize: "0.4em", color: "var(--text-3)" }}> sec</span>
-              </div>
-              <p className="cs-versus__sub">
-                By the time a competitor finishes a couple jobs, your Dozals just finished{" "}
-                <em>35</em>. And it scales instantly for peak spikes — our 158-task record day
-                cleared without breaking a sweat.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* A real life Dozal Employee */}
-        <div className="cs-role reveal" style={{ marginTop: 56, padding: "60px 48px" }} data-label="Case Study · A real life Dozal Employee" data-file="app/page.tsx">
-          <div style={{ display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-              <div className="cs-role__ey">
-                <span className="eyebrow"><span className="rule"></span> A real life Dozal Employee</span>
-              </div>
-              <h3 className="cs-role__title">
-                The <em>Cleaning Schedule Coordinator</em> — one agent, 255 schedules.
-              </h3>
-              <div className="cs-role__row">
-                <div>
-                  <span className="num ember">255</span>
-                  <div className="k">Schedules generated &amp; posted</div>
-                </div>
-                <div>
-                  <span className="num">1,972</span>
-                  <div className="k">Total jobs completed platform-wide</div>
-                </div>
-                <div>
-                  <span className="num ember">240<span style={{ fontSize: "0.4em" }}>s</span></span>
-                  <div className="k">Average completion time</div>
-                </div>
-              </div>
-              <p className="cs-role__quote">
-                One agent. <em>255 cleaning schedules generated and posted.</em> It pays
-                for the entire platform before your team even finishes their morning sync.
-              </p>
-            </div>
-            <div style={{ flex: "1 1 300px", minWidth: 0 }}>
-              <img
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80"
-                alt="Cleaning crew entering a new house"
-                style={{ width: "100%", height: "auto", borderRadius: 10, display: "block", boxShadow: "var(--shadow-frame)" }}
+            <span className="trust">
+              <span className="dot"></span>
+              <span>
+                {t({
+                  en: "You stay in control — nothing sends without your OK when you arm a stop.",
+                  es: "Tú sigues al mando — nada se envía sin tu OK cuando activas una pausa.",
+                })}
+              </span>
+            </span>
+            <div className="hero-char">
+              <Image
+                src="/characters/dozal-coral-large.png"
+                alt={t({ en: "Dozal, your DozalDevs helper", es: "Dozal, tu ayudante de DozalDevs" })}
+                width={1500}
+                height={1950}
+                priority
               />
+              <span className="cap">
+                {t({ en: "Hand it to Dozal.", es: "Pásaselo a Dozal." })}
+                <br />
+                {t({ en: "Your crew does the work.", es: "Tu crew hace el trabajo." })}
+              </span>
             </div>
           </div>
-        </div>
 
-        {/* Inline CTA */}
-        <div className="reveal" style={{ marginTop: 56, textAlign: "center" }} data-label="Case Study · CTA" data-file="app/page.tsx">
-          <h3 className="serif" style={{ fontSize: "clamp(26px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em", maxWidth: "20ch", margin: "0 auto" }}>
-            Ready to hire your <em style={{ fontStyle: "italic", color: "var(--ember-deep)" }}>first AI employee?</em>
-          </h3>
-          <p style={{ margin: "16px auto 28px", maxWidth: "54ch", color: "var(--text-2)", fontSize: 16 }}>
-            Go from a plain-English description to a fully productive, 24/7 AI worker in minutes.
+          <figure>
+            <SignupCard id="hero-form" cta={{ en: "Get started for free", es: "Comienza gratis" }} />
+          </figure>
+        </div>
+      </section>
+
+      {/* ============ the stack (problem agitation) ============ */}
+      <section className="section band" id="the-stack" data-section="The Stack">
+        <div className="wrap stack">
+          <h2>
+            <span>{t({ en: "Fourteen tabs. ", es: "Catorce pestañas. " })}</span>
+            <span className="word">
+              {t({ en: "Zero of them are the work.", es: "Ninguna es el trabajo." })}
+            </span>
+          </h2>
+          <p>
+            {t({
+              en: "The enemy isn't a competitor. It's the stack — the fourteen tabs, the seat licences, the onboarding call, the integration that broke last Tuesday, the “we just need to set it up” that became a quarter. You didn't sign up to run software. You signed up to get work done.",
+              es: "El enemigo no es un competidor. Es el stack — las catorce pestañas, las licencias por asiento, la llamada de arranque, la integración que se rompió el martes pasado, el “solo hay que configurarlo” que se volvió un trimestre. No te apuntaste para operar software. Te apuntaste para sacar el trabajo.",
+            })}
           </p>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-            <a className="btn btn--primary" href="https://app.dozaldevs.com/dashboard" target="_blank" rel="noopener noreferrer">
-              Build my AI employee <span className="glint"></span>
-            </a>
-            <a className="btn btn--ghost" href="https://app.dozaldevs.com/dashboard" target="_blank" rel="noopener noreferrer">
-              See the platform in action
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* ═══ THE REAL PROBLEM ═══ */}
-      <section className="section--tight wrap" id="the-real-problem" data-section="The Real Problem">
-        <div className="reveal" style={{ display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 300px", minWidth: 0 }}>
-            <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&h=500&q=80"
-              alt="Cluttered desk with paperwork and laptop"
-              style={{ width: "100%", height: "auto", borderRadius: 10, display: "block", boxShadow: "var(--shadow-frame)" }}
-            />
-          </div>
-          <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-            <div className="frame-light">
-              <div className="eyebrow">
-                <span className="rule"></span> The real problem
-              </div>
-              <p className="manifesto">
-                You didn&apos;t buy a tool to <span className="strike">track</span> the work.{" "}
-                <span className="em">
-                  You bought it to finish the work.
-                </span>
-              </p>
-              <p style={{ marginTop: 24, fontSize: 17, color: "var(--text-2)", maxWidth: "60ch", lineHeight: 1.6 }}>
-                Asana, Monday, Notion, ClickUp — every project management tool you&apos;ve ever paid for
-                is a beautifully designed to-do list. They organize the queue. They remind you about
-                the queue. They color-code the queue. But when Friday hits, the queue is still there —
-                because none of them ever picked up a single task and actually did it.
-              </p>
-              <p style={{ marginTop: 16, fontSize: 17, color: "var(--text-2)", maxWidth: "60ch", lineHeight: 1.6 }}>
-                Worse, they added a tax you never agreed to: the hours spent grooming backlogs,
-                updating statuses, and writing tickets are hours you didn&apos;t spend closing them.
-                The tool that was supposed to save you time now demands your time just to stay fed.
-              </p>
-              <div className="quote-attr" style={{ marginTop: 28 }}>
-                <span className="glint"></span>{" "}
-                <span style={{ fontSize: 13, color: "var(--text-3)", letterSpacing: ".5px" }}>
-                  Tracking isn&apos;t doing. · The DozalDevs difference
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ MECHANISM ═══ */}
-      <section className="section wrap" id="mechanism" data-section="Mechanism">
-        <div className="shead reveal">
-          <div className="shead__index">
-            § 02<span>The mechanism</span>
-          </div>
-          <div>
-            <h2 className="shead__title">
-              Connect it. Describe it. <em>It runs.</em>
+      {/* ============ three pillars (control, transparency, value) ============ */}
+      <section className="section" id="pillars" data-section="Pillars">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>
+              {t({
+                en: "Delegating shouldn't feel like losing control.",
+                es: "Delegar no debería sentirse como perder el control.",
+              })}
             </h2>
-            <p className="shead__lede">
-              No migration, no new tab to babysit. Live instantly.
+            <p>
+              {t({
+                en: "Three things make handing off the work feel safe.",
+                es: "Tres cosas hacen que entregar el trabajo se sienta seguro.",
+              })}
             </p>
           </div>
-        </div>
-        <div className="steps reveal" style={{ marginTop: 56 }}>
-          <div className="step" data-label="Step 01 · Connect" data-file="app/page.tsx">
-            <div className="step__marker">
-              <span className="glint tw"></span>
-            </div>
-            <div className="step__day">Day 1–2 · Connect</div>
-            <div className="step__title">Bring your stack.</div>
-            <p className="step__body">
-              Sign in to the apps you already use — inbox, books, PM tool, CRM. The Dozal puts a hand on
-              each one and waits.
-            </p>
-          </div>
-          <div className="step" data-label="Step 02 · Shadow" data-file="app/page.tsx">
-            <div className="step__marker">
-              <span className="glint tw"></span>
-            </div>
-            <div className="step__day">Day 3–5 · Shadow</div>
-            <div className="step__title">It watches you work.</div>
-            <p className="step__body">
-              In shadow mode it learns your patterns, your exceptions, your “I&apos;ll handle this one.”
-              It builds your playbook, not a template.
-            </p>
-          </div>
-          <div className="step" data-label="Step 03 · Execute" data-file="app/page.tsx">
-            <div className="step__marker">
-              <span className="glint tw"></span>
-            </div>
-            <div className="step__day">Day 6–7 · Execute</div>
-            <div className="step__title">Describe. It does.</div>
-            <p className="step__body">
-              Send the request in plain language. It takes the action, leaves the trail, and queues
-              anything touchy for one-tap approval.
-            </p>
-          </div>
-        </div>
-        <p className="reveal" style={{ marginTop: 36 }}>
-          <Link className="textlink" href="/how-it-works">
-            See how it works, in detail →
-          </Link>
-        </p>
-      </section>
-
-      <div className="divider" data-label="Divider 02" data-file="app/page.tsx">
-        <span className="bar left"></span>
-        <span className="glint"></span>
-        <span className="bar right"></span>
-      </div>
-
-      {/* ═══ QUOTE ═══ */}
-      <section className="section--tight wrap" id="quote" data-section="Quote">
-        <div className="reveal" style={{ display: "flex", gap: 48, alignItems: "stretch", flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-            <div className="frame-light">
-              <p className="quote">
-                “The day my Dozal queued its first ten <em>already-done </em> actions for me to glance at, I
-                realized I&apos;d spent years confusing ‘productivity’ with actually finishing things.”
-              </p>
-              <div className="quote-attr">
-                <span className="avatar">M</span>
-                <div>
-                  <div className="who">M. Riordan</div>
-                  <div className="role">Fractional CFO · 11 client ledgers · Dozal live since March</div>
-                </div>
+          <div className="cards">
+            <div className="card">
+              <div className="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 5.5h16v10H9l-4 4z" />
+                  <path d="M8 9.5h8M8 12.5h5" />
+                </svg>
               </div>
+              <h3>{t({ en: "Say it, don't build it", es: "Se encarga en lenguaje simple" })}</h3>
+              <p>
+                {t({
+                  en: "Plain-English commissioning. No flowcharts, no setup, no course.",
+                  es: "Se encarga en lenguaje simple. Sin diagramas, sin configuración, sin curso.",
+                })}
+              </p>
             </div>
-          </div>
-          <div style={{ flex: "1 1 300px", minWidth: 0 }}>
-            <img
-              src="https://images.pexels.com/photos/5530440/pexels-photo-5530440.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop"
-              alt="Woman in black t-shirt using computer and smiling"
-              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 10, display: "block", boxShadow: "var(--shadow-frame)" }}
-            />
+            <div className="card">
+              <div className="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <h3>{t({ en: "You see everything it did", es: "Mira todo lo que hizo" })}</h3>
+              <p>
+                {t({
+                  en: "A readable record of every action. Failures we surface, not ones you discover.",
+                  es: "Un registro legible de cada acción. Fallas que te avisamos, no que descubres.",
+                })}
+              </p>
+            </div>
+            <div className="card">
+              <div className="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.6 13.4 12.4 21.6a2 2 0 0 1-2.8 0L3 15V4.5A1.5 1.5 0 0 1 4.5 3H15l5.6 5.6a2 2 0 0 1 0 2.8z" />
+                  <path d="M7.5 7.5h.01" />
+                </svg>
+              </div>
+              <h3>{t({ en: "Buy the work, not the tool", es: "Compras el trabajo, no la herramienta" })}</h3>
+              <p>
+                {t({
+                  en: "Priced against the work, not the seat. Measured in work completed.",
+                  es: "Con precio por el trabajo, no por el asiento. Medido en trabajo terminado.",
+                })}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className="section ctaband wrap" id="cta" data-section="CTA">
-        <span className="glint xl tw reveal"></span>
-        <h2 className="reveal">
-          Stop reviewing what to do. Start approving what&apos;s <em>already done</em>.
-        </h2>
-        <p className="sub reveal">
-          Tell us what you&apos;d hand off first. We&apos;ll connect your stack and have your
-          Dozal working inside your apps instantly. No discovery call needed.
-        </p>
-        <div className="row reveal">
-          <Link className="btn btn--primary" href="/demo">
-            Book a demo <span className="glint"></span>
-          </Link>
-          <Link className="btn btn--ghost" href="/pricing">
-            See pricing
-          </Link>
-        </div>
-        <div className="foot reveal">
-          <span className="item">
-            <span className="glint"></span> Live instantly
-          </span>
-          <span className="item">
-            <span className="glint"></span> From $10/mo
-          </span>
-          <span className="item">
-            <span className="glint"></span> Cancel anytime
-          </span>
+      {/* ============ social proof ============ */}
+      <section className="section band" id="proof" data-section="Social Proof">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>{t({ en: "Real jobs, handed off.", es: "Trabajos reales, delegados." })}</h2>
+            <p>
+              {t({
+                en: "Operators who stopped running software and started handing off work.",
+                es: "Operadores que dejaron de operar software y empezaron a delegar el trabajo.",
+              })}
+            </p>
+          </div>
+          <div className="quotes">
+            <figure className="quote">
+              <p className="q">
+                {t({
+                  en: "“I used to drown in guest messaging. Now DozalDevs takes the routine messages off my hands, and I can see every single reply written on the record. Zero setup anxiety.”",
+                  es: "“Solía ahogarme respondiendo mensajes de huéspedes. Ahora DozalDevs se encarga de los mensajes de rutina y puedo ver cada respuesta registrada en el historial. Cero ansiedad de configuración.”",
+                })}
+              </p>
+              <span className="chip">
+                {t({ en: "Guest replies, off her desk", es: "Respuestas a huéspedes, fuera de su escritorio" })}
+              </span>
+              <figcaption className="who">
+                <span className="avatar" aria-hidden="true">
+                  AM
+                </span>
+                <span>
+                  <strong>Alex Mercer</strong>
+                  <span>{t({ en: "STR host", es: "Administrador de propiedades" })}</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure className="quote">
+              <p className="q">
+                {t({
+                  en: "“After my Zapier setup broke silently for a week, I switched. DozalDevs alerts me immediately if a job stops. That's the control I needed.”",
+                  es: "“Después de que mi configuración de Zapier se rompió en silencio por una semana, cambié. DozalDevs me avisa de inmediato si un trabajo se detiene. Ese es el control que necesitaba.”",
+                })}
+              </p>
+              <span className="chip">
+                {t({ en: "Told the moment a job stops", es: "Avisada cuando un trabajo se detiene" })}
+              </span>
+              <figcaption className="who">
+                <span className="avatar" aria-hidden="true">
+                  SJ
+                </span>
+                <span>
+                  <strong>Sarah Jenkins</strong>
+                  <span>{t({ en: "Solo founder", es: "Fundadora" })}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
+
+      {/* ============ meet the crew (characters) ============ */}
+      <section className="section" id="crew" data-section="Crew">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>{t({ en: "Meet the crew", es: "Conoce al crew" })}</h2>
+            <p>
+              {t({
+                en: "The characters carry the warmth; the interface stays quiet. You stay the hero — a Dozal is your sidekick, doing the work inside the apps you already use.",
+                es: "Los personajes llevan la calidez; la interfaz se queda quieta. Tú sigues siendo el héroe — un Dozal es tu compañero que hace el trabajo dentro de las apps que ya usas.",
+              })}
+            </p>
+          </div>
+          <div className="crew">
+            {CREW.map((c) => (
+              <figure key={c.name}>
+                <Image src={c.src} alt={c.name} width={c.w} height={c.h} loading="lazy" style={{ width: "100%", height: "auto" }} />
+                <figcaption>
+                  <strong>{c.name}</strong>
+                  <span>{t(c.role)}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="crew-note">
+            <p>
+              {t({
+                en: "You run the business. The work gets done.",
+                es: "Tú llevas el negocio. El trabajo se hace.",
+              })}
+            </p>
+            <span>
+              {t({
+                en: "The user stays the hero. DozalDevs stays the sidekick. That's the whole structure.",
+                es: "El usuario sigue siendo el héroe. DozalDevs sigue siendo el compañero. Esa es toda la estructura.",
+              })}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ final CTA (repeat form) ============ */}
+      <section className="section band close" id="start" data-section="CTA">
+        <div className="wrap">
+          <h2>
+            {t({
+              en: "Stop running software. Start handing off work.",
+              es: "Deja de operar software. Comienza a delegar.",
+            })}
+          </h2>
+          <p className="lede">
+            {t({
+              en: "Start with one real, recurring job. See everything it does before anything sends.",
+              es: "Empieza con un trabajo real y recurrente. Ves todo lo que hace antes de que algo se envíe.",
+            })}
+          </p>
+          <SignupCard id="close-form" heading={false} cta={{ en: "Start now", es: "Comienza ahora" }} />
+        </div>
+      </section>
+
+      {/* ============ persistent CTA ============ */}
+      <StickyCta />
     </>
   );
 }

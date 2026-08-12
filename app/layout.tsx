@@ -1,33 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Lora, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-const mono = JetBrains_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
-
 export const metadata: Metadata = {
-  title: "Dozals — AI employees that actually do the work",
+  title: "DozalDevs — The computer work, off your desk.",
   description:
-    "Dozals are AI employees that respond, click, manage, edit and execute real work inside the apps you already use. They don't hand you a to-do list. They close it.",
+    "DozalDevs takes the multi-step computer work off your desk and hands it back finished. You describe the job in plain words and see everything it did.",
+  icons: {
+    icon: [
+      { url: "/brand/favicon.ico", sizes: "any" },
+      { url: "/brand/favicon-coral-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/brand/favicon-coral-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: "/brand/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -36,11 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${mono.variable} ${lora.variable} ${workSans.variable}`}
-    >
+    <html lang="en" data-theme="light">
       <head>
+        {/* Brand type: Baloo 2 (display, 800) + Nunito (body 400/600/700) — self-hosted */}
+        <link rel="stylesheet" href="/fonts/fonts.css" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -54,9 +38,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body suppressHydrationWarning className="min-h-screen">
-        {children}
-      </body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
